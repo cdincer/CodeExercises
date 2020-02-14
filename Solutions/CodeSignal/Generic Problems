@@ -1,0 +1,8 @@
+/*
+
+Checking for palindrome on a string
+boolean checkPalindrome(String inputString) {
+    return inputString.equals(new StringBuilder(inputString).reverse().toString());
+}
+
+*/
