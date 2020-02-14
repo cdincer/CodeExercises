@@ -1,0 +1,35 @@
+/*
+
+Checking for palindrome on a string
+
+boolean checkPalindrome(String inputString) {
+    return inputString.equals(new StringBuilder(inputString).reverse().toString());
+}
+---------------------------------------
+Largest adjacent product:
+
+    Example
+    For inputArray = [3, 6, -2, -5, 7, 3], the output should be
+    adjacentElementsProduct(inputArray) = 21.
+    7 and 3 produce the largest product.
+
+
+int adjacentElementsProduct(int[] inputArray) {
+    return IntStream.range(1, inputArray.length).map(i->inputArray[i]*inputArray[i-1]).max().getAsInt();}
+
+Other way to solve it:
+
+int adjacentElementsProduct(int[] inputArray) {
+    int product = inputArray[0] * inputArray[1];
+    for(int i = 1; i < inputArray.length-1; i++){
+        int temp = inputArray[i] * inputArray[i+1];
+        if(temp > product){
+            product = temp;
+        }
+    }
+    return product;
+}
+
+---------------------------------------
+
+*/
