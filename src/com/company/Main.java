@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -17,23 +18,9 @@ public class Main {
 
     }
 
+    int adjacentElementsProduct(int[] inputArray) {
+        return IntStream.range(1, inputArray.length).map(i->inputArray[i]*inputArray[i-1]).max().getAsInt();}
 
-   public  int firstDuplicate(int[] a)
-    {
-        Set<Integer> result = new HashSet();
-        for(int i=0; i<a.length; i++)
-        {
-            if(result.contains(a[i]))
-            {
-                return a[i];
-            } else
-            {
-
-                result.add(a[i]);
-            }
-        }
-        return -1;
-    }
 
 
 }
