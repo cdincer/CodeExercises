@@ -21,3 +21,5 @@ int shapeArea(int n) {
         return i + 4 + (4 * (n - 2));
     }
 }
+
+Link:https://app.codesignal.com/arcade/intro/level-2/yuGuHvcCaFCKk56rJ/solutions
