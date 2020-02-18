@@ -23,13 +23,14 @@ public class Main {
 
         int counter, former, latter;
         counter = 0;
-for(int n=0; n<statues.length-1;n++)
+for(int i=0; i<statues.length-1;i++)
 {
-    if(statues[n]>statues[n+1])
+    for(int j=0;j<statues.length-i-1;j++)
+    if(statues[j]>statues[j+1])
     {
-        former=statues[n];
-        statues[n]=statues[n+1];
-        statues[n+1]=former;
+        former=statues[j];
+        statues[j]=statues[j+1];
+        statues[j+1]=former;
     }
 }
         for (int i = 0; i < statues.length - 1; i++) {
