@@ -1,0 +1,32 @@
+//Create 3 arrays to check for 3 directons. Fill up those as you go through the main grid according to rules of sudoku
+//Best solution for this question,in code coherence.
+boolean sudoku2(char[][] grid) {
+    for (int i = 0; i < 9; i++) {
+
+        char[] row = new char[9];
+        char[] square = new char[9];
+        char[] column = grid[i].clone();
+
+        for (int j = 0; j < 9; j ++) {
+            row[j] = grid[j][i];
+            square[j] = grid[(i / 3) * 3 + j / 3][i * 3 % 9 + j % 3];
+        }
+        if (!(validate(column) && validate(row) && validate(square)))
+            return false;
+    }
+    return true;
+}
+
+private boolean validate(char[] check) {
+    String i = "";
+    Arrays.sort(check);
+    for (char number : check) {
+        if(i.indexOf(number)!=-1 && number!='.')
+            return false;
+        if(number!='.')
+            i+=number;
+    }
+    return true;
+}
+
+///https://app.codesignal.com/interview-practice/task/SKZ45AF99NpbnvgTn/description?solutionId=Li4hSiS9qMaccPwS3
