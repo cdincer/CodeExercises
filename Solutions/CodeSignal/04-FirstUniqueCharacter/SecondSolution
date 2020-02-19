@@ -1,0 +1,46 @@
+//Using firstindex,lastindex to track locations if they are the same,it means there is no more than one occurence.
+char firstNotRepeatingCharacter(String s) {
+    char[] c=s.toCharArray();
+for(int i=0;i<s.length();i++){
+    if(s.indexOf(c[i])==s.lastIndexOf(c[i]))
+        return c[i];
+}
+    return '_';
+}
+
+
+/*
+Java String indexOf() Method
+
+Example
+
+Search a string for the first occurrence of "planet":
+
+public class MyClass {
+  public static void main(String[] args) {
+    String myStr = "Hello planet earth, you are a great planet.";
+    System.out.println(myStr.indexOf("planet"));
+  }
+}
+
+*/
+
+/*
+Java String LastIndexOf Method
+
+public class JavaExample {
+   public static void main(String[] args) {
+	String str = "beginnersbook is for beginners";
+	char ch = 'b';
+	char ch2 = 's';
+	String subStr = "beginners";
+	int posOfB = str.lastIndexOf(ch);
+	int posOfS = str.lastIndexOf(ch2);
+	int posOfSubstr = str.lastIndexOf(subStr);
+	System.out.println(posOfB);
+	System.out.println(posOfS);
+	System.out.println(posOfSubstr);
+   }
+}
+
+*/
