@@ -1,0 +1,324 @@
+package com.company;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.IntStream;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+String[]   crypt={"SEND",
+                  "MORE",
+                  "MONEY"};
+
+String[]   crypt2={"BAA",
+                   "CAB",
+                   "DAB"};
+
+String[]   crypt3={"A",
+                   "A",
+                   "A"};
+
+
+ char solution3[][] = {{'A','0'}};
+
+
+char solution[][]={{'O','0'},
+ {'M','1'},
+ {'Y','2'},
+ {'E','5'},
+ {'N','6'},
+ {'D','7'},
+ {'R','8'},
+ {'S','9'}};
+char solution2[][]={
+ {'A','0'},
+ {'B','1'},
+ {'C','2'},
+ {'D','4'}};
+      boolean  Test3=    isCryptSolution(crypt3,solution3);
+
+
+    }
+
+
+    public static boolean validation(char[] FirstArray,char[] SecondArray,char[] ThirdArray)
+    {
+        boolean result=true;
+
+        if(FirstArray[0]=='0' || FirstArray[FirstArray.length-1]=='0')
+            result= false;
+        if(SecondArray[0]=='0' || SecondArray[SecondArray.length-1]=='0')
+            result= false;
+        if(ThirdArray[0]=='0' || ThirdArray[ThirdArray.length-1]==0)
+            result= false;
+
+        String FirstWord= new String(FirstArray);
+        String SecondWord= new String(SecondArray);
+        String ThirdWord= new String(ThirdArray);
+
+        int FirstNumber  = Integer.parseInt(FirstWord);
+        int SecondNumber  = Integer.parseInt(SecondWord);
+        int ThirdNumber  = Integer.parseInt(ThirdWord);
+
+        if( FirstNumber+SecondNumber != ThirdNumber)
+            result=false;
+
+        if(FirstArray.length == 1 && SecondArray.length ==1 && ThirdArray.length==1 && FirstNumber+SecondNumber == ThirdNumber)
+            result= true;
+
+        System.out.print(result);
+        return result;
+    }
+
+
+public static    boolean isCryptSolution(String[] crypt, char[][] solution) {
+//crypt.length = 3
+
+//Step 1:Convert crypt words to number with help from solution.
+//Go through char solution to get the values ?
+//Step 2:Assign these values to their
+
+        char[] FirstWord= new char[crypt[0].length()];
+        char[] SecondWord= new char[crypt[1].length()];
+        char[] ThirdWord= new char[crypt[2].length()];
+
+
+//Begin magin loop for going through the words.
+
+        for(int i=0;i<crypt.length;i++)
+        {
+            String ItemToBeDecrypted=crypt[i];
+            char[] ArrayToBeDecrypted= ItemToBeDecrypted.toCharArray();
+
+//Second loop go through the match CharArray
+            for(int j=0;j<ArrayToBeDecrypted.length;j++)
+            {
+  //Third loop to go through solution and find the bit.
+                for(int y=0;y<solution.length;y++)
+                {
+                    if(ArrayToBeDecrypted[j]==solution[y][0] && i==0)
+                        FirstWord[j]=solution[y][1];
+                    if(ArrayToBeDecrypted[j]==solution[y][0] && i==1)
+                        SecondWord[j]=solution[y][1];
+                    if(ArrayToBeDecrypted[j]==solution[y][0] && i==2)
+                        ThirdWord[j]=solution[y][1];
+                }
+            }
+
+
+
+        }        //Main loop closing
+System.out.println(FirstWord);
+System.out.println(SecondWord);
+System.out.println(ThirdWord);
+
+
+
+
+boolean result = validation(FirstWord,SecondWord,ThirdWord);
+
+
+    return result;
+    }
+
+
+
+}
+
+
+
+
+Test 11
+Input:
+
+crypt:
+["BAA",
+ "CAB",
+ "DAB"]
+solution:
+[["A","0"],
+ ["B","1"],
+ ["C","2"],
+ ["D","3"]]
+
+Expected Output:
+
+true
+
+Test 12
+Input:
+
+crypt:
+["BAA",
+ "BAA",
+ "CAA"]
+solution:
+[["A","0"],
+ ["B","1"],
+ ["C","2"]]
+
+Expected Output:
+
+true
+
+Test 13
+Input:
+
+crypt:
+["AA",
+ "BB",
+ "AA"]
+solution:
+[["A","1"],
+ ["B","0"]]
+
+Expected Output:
+
+false
+
+Test 14
+Input:
+
+crypt:
+["FOUR",
+ "FOUR",
+ "EIGHT"]
+solution:
+[["F","5"],
+ ["O","2"],
+ ["U","3"],
+ ["R","9"],
+ ["E","1"],
+ ["I","0"],
+ ["G","4"],
+ ["H","7"],
+ ["T","8"]]
+
+Expected Output:
+
+true
+
+Test 15
+Input:
+
+crypt:
+["AAAAAAAAAAAAAA",
+ "BBBBBBBBBBBBBB",
+ "CCCCCCCCCCCCCC"]
+solution:
+[["A","0"],
+ ["B","1"],
+ ["C","2"]]
+
+Expected Output:
+
+false
+Test 16
+Input:
+
+crypt:
+["AAAAAAAAAAAAAA",
+ "BBBBBBBBBBBBBB",
+ "CCCCCCCCCCCCCC"]
+solution:
+[["A","1"],
+ ["B","2"],
+ ["C","3"]]
+
+Expected Output:
+
+true
+
+Test 17
+Input:
+
+crypt:
+["WASD",
+ "IJKL",
+ "OPAS"]
+solution:
+[["W","2"],
+ ["A","4"],
+ ["S","7"],
+ ["D","9"],
+ ["I","1"],
+ ["J","0"],
+ ["K","6"],
+ ["L","8"],
+ ["O","3"],
+ ["P","5"]]
+
+Expected Output:
+
+true
+
+Test 18
+Input:
+
+crypt:
+["WASD",
+ "IJKL",
+ "OPAS"]
+solution:
+[["W","2"],
+ ["A","0"],
+ ["S","4"],
+ ["D","1"],
+ ["I","5"],
+ ["J","8"],
+ ["K","6"],
+ ["L","3"],
+ ["O","7"],
+ ["P","9"]]
+
+Expected Output:
+
+true
+
+Test 19
+Input:
+
+crypt:
+["WASD",
+ "IJKL",
+ "AOPAS"]
+solution:
+[["W","2"],
+ ["A","0"],
+ ["S","4"],
+ ["D","1"],
+ ["I","5"],
+ ["J","8"],
+ ["K","6"],
+ ["L","3"],
+ ["O","7"],
+ ["P","9"]]
+
+Expected Output:
+
+false
+
+Test 20
+Input:
+
+crypt:
+["BLACK",
+ "BLUE",
+ "APPLE"]
+solution:
+[["B","5"],
+ ["L","8"],
+ ["A","6"],
+ ["C","7"],
+ ["K","0"],
+ ["U","1"],
+ ["E","9"],
+ ["P","4"]]
+
+Expected Output:
+
+true
