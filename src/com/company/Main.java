@@ -10,122 +10,57 @@ public class Main {
 
     public static void main(String[] args) {
 
-String[]   crypt={"SEND",
-                  "MORE",
-                  "MONEY"};
+//        ListNode<Integer> l1= {3, 1, 2, 3, 4, 5};
+        Integer k1=3;
 
-String[]   crypt2={"BAA",
-                   "CAB",
-                   "DAB"};
-
-String[]   crypt3={"A",
-                   "A",
-                   "A"};
-
-
- char solution3[][] = {{'A','0'}};
-
-
-char solution[][]={{'O','0'},
- {'M','1'},
- {'Y','2'},
- {'E','5'},
- {'N','6'},
- {'D','7'},
- {'R','8'},
- {'S','9'}};
-char solution2[][]={
- {'A','0'},
- {'B','1'},
- {'C','2'},
- {'D','4'}};
-      boolean  Test3=    isCryptSolution(crypt3,solution3);
-
+        ListNode<Integer> l1 = new ListNode<Integer>(3);
 
     }
 
 
-    public static boolean validation(char[] FirstArray,char[] SecondArray,char[] ThirdArray)
-    {
-        boolean result=true;
+  public static   ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
+        if (l == null) {
+            return null;
+        }
 
-        if(FirstArray[0]=='0' || FirstArray[FirstArray.length-1]=='0')
-            result= false;
-        if(SecondArray[0]=='0' || SecondArray[SecondArray.length-1]=='0')
-            result= false;
-        if(ThirdArray[0]=='0' || ThirdArray[ThirdArray.length-1]==0)
-            result= false;
+        ListNode<Integer> firstNode = null;
+        ListNode<Integer> currentNode = null;
+        ListNode<Integer> lastNode = null;
 
-        String FirstWord= new String(FirstArray);
-        String SecondWord= new String(SecondArray);
-        String ThirdWord= new String(ThirdArray);
+        ListNode<Integer> current = l;
 
-        int FirstNumber  = Integer.parseInt(FirstWord);
-        int SecondNumber  = Integer.parseInt(SecondWord);
-        int ThirdNumber  = Integer.parseInt(ThirdWord);
-
-        if( FirstNumber+SecondNumber != ThirdNumber)
-            result=false;
-
-        if(FirstArray.length == 1 && SecondArray.length ==1 && ThirdArray.length==1 && FirstNumber+SecondNumber == ThirdNumber)
-            result= true;
-
-        System.out.print(result);
-        return result;
-    }
-
-
-public static    boolean isCryptSolution(String[] crypt, char[][] solution) {
-//crypt.length = 3
-
-//Step 1:Convert crypt words to number with help from solution.
-//Go through char solution to get the values ?
-//Step 2:Assign these values to their
-
-        char[] FirstWord= new char[crypt[0].length()];
-        char[] SecondWord= new char[crypt[1].length()];
-        char[] ThirdWord= new char[crypt[2].length()];
-
-
-//Begin magin loop for going through the words.
-
-        for(int i=0;i<crypt.length;i++)
-        {
-            String ItemToBeDecrypted=crypt[i];
-            char[] ArrayToBeDecrypted= ItemToBeDecrypted.toCharArray();
-
-//Second loop go through the match CharArray
-            for(int j=0;j<ArrayToBeDecrypted.length;j++)
-            {
-  //Third loop to go through solution and find the bit.
-                for(int y=0;y<solution.length;y++)
-                {
-                    if(ArrayToBeDecrypted[j]==solution[y][0] && i==0)
-                        FirstWord[j]=solution[y][1];
-                    if(ArrayToBeDecrypted[j]==solution[y][0] && i==1)
-                        SecondWord[j]=solution[y][1];
-                    if(ArrayToBeDecrypted[j]==solution[y][0] && i==2)
-                        ThirdWord[j]=solution[y][1];
-                }
+        // iterate through the list, searching for the value k
+        while (true) {
+            if (current.value != k) {
+                // since this node isnt k, set our variables and proceed on
+                // set currentNode
+                currentNode = current;
+                // the set the previous nodes next = this node
+                if (lastNode != null) lastNode.next = currentNode;
+                // set lastNode to this current node
+                lastNode = currentNode;
+                // set the first node if it hasnt been set
+                if (firstNode == null) firstNode = currentNode;
             }
 
+            // when we hit the end, bail out.
+            if (current.next == null) break;
+            ListNode<Integer> next = current.next;
+            current.next = null;
+            current = next;
 
+        }
 
-        }        //Main loop closing
-System.out.println(FirstWord);
-System.out.println(SecondWord);
-System.out.println(ThirdWord);
-
-
-
-
-boolean result = validation(FirstWord,SecondWord,ThirdWord);
-
-
-    return result;
+        return firstNode;
     }
 
-
+public static class ListNode<T> {
+  ListNode(T x) {
+    value = x;
+  }
+  T value;
+  ListNode<T> next;
+}
 
 }
 

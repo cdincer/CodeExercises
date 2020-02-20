@@ -1,0 +1,89 @@
+----------------------
+// Singly-linked lists are already defined with this interface:
+// class ListNode<T> {
+//   ListNode(T x) {
+//     value = x;
+//   }
+//   T value;
+//   ListNode<T> next;
+// }
+//
+ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
+    if (l == null) {
+        return null;
+    }
+
+    ListNode<Integer> firstNode = null;
+    ListNode<Integer> currentNode = null;
+    ListNode<Integer> lastNode = null;
+
+    ListNode<Integer> current = l;
+
+    // iterate through the list, searching for the value k
+    while (true) {
+        if (current.value != k) {
+            // since this node isnt k, set our variables and proceed on
+            // set currentNode
+            currentNode = current;
+            // the set the previous nodes next = this node
+            if (lastNode != null) lastNode.next = currentNode;
+            // set lastNode to this current node
+            lastNode = currentNode;
+            // set the first node if it hasnt been set
+            if (firstNode == null) firstNode = currentNode;
+        }
+
+        // when we hit the end, bail out.
+        if (current.next == null) break;
+        ListNode<Integer> next = current.next;
+        current.next = null;
+        current = next;
+
+    }
+
+    return firstNode;
+}
+-------------------------
+// Singly-linked lists are already defined with this interface:
+// class ListNode<T> {
+//   ListNode(T x) {
+//     value = x;
+//   }
+//   T value;
+//   ListNode<T> next;
+// }
+//
+boolean isListPalindrome(ListNode<Integer> l) {
+	    ListNode slow = l; ListNode fast = l;
+	    while(fast!=null && fast.next!=null){
+	        fast= fast.next.next;
+	        slow = slow.next;
+	    }
+
+	    if(fast!=null){
+	        slow= slow.next;
+	    }
+	    slow = reverse(slow);
+	    fast = l;
+	    while(slow!=null){
+	        int val1=  (int) slow.value;
+		    int val2=  (int) fast.value;
+	        if(val1!=val2) return false;
+	        slow= slow.next;
+	        fast= fast.next;
+	    }
+	    return true;
+
+	}
+
+	public ListNode reverse(ListNode head){
+	    ListNode prev = null;
+	    while(head!=null){
+	        ListNode temp = head.next;
+	        head.next= prev;
+	        prev= head;
+	        head = temp;
+	    }
+	    return prev;
+	}
+	------------------------------------------
