@@ -53,39 +53,56 @@ ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
 //   ListNode<T> next;
 // }
 //
+// Definition for singly-linked list:
+// class ListNode<T> {
+//   ListNode(T x) {
+//     value = x;
+//   }
+//   T value;
+//   ListNode<T> next;
+// }
+//
 boolean isListPalindrome(ListNode<Integer> l) {
-	    ListNode slow = l; ListNode fast = l;
-	    while(fast!=null && fast.next!=null){
-	        fast= fast.next.next;
-	        slow = slow.next;
-	    }
+    // 1. Move
+    ListNode slow = l, fast = l;
+    while(fast != null && fast.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+    }
 
-	    if(fast!=null){
-	        slow= slow.next;
-	    }
-	    slow = reverse(slow);
-	    fast = l;
-	    while(slow!=null){
-	        int val1=  (int) slow.value;
-		    int val2=  (int) fast.value;
-	        if(val1!=val2) return false;
-	        slow= slow.next;
-	        fast= fast.next;
-	    }
-	    return true;
+    // linked list has odd length
+    if(fast!=null){
+        slow = slow.next;
+    }
 
-	}
+    // 2. Reverse second half of linked list and move slow pointer to the 2nd head
+    slow = reverse(slow);
+    fast = l;
+    // 3. Compare
+    while(slow!=null){
 
-	public ListNode reverse(ListNode head){
-	    ListNode prev = null;
-	    while(head!=null){
-	        ListNode temp = head.next;
-	        head.next= prev;
-	        prev= head;
-	        head = temp;
-	    }
-	    return prev;
-	}
+        if(!fast.value.equals(slow.value)){
+            System.out.println(slow.value);
+            System.out.println(fast.value);
+            return false;
+        }
+        fast = fast.next;
+        slow = slow.next;
+    }
+    return true;
+}
+
+public ListNode reverse(ListNode<Integer> head){
+    ListNode prev = null;
+    while(head!=null){
+        ListNode next = head.next;
+        head.next = prev;
+        prev = head;
+        head = next;
+    }
+    return prev;
+}
+
 	------------------------------------------
 	addTwoHugeNumbers
 	// Singly-linked lists are already defined with this interface:
