@@ -134,3 +134,121 @@ boolean isListPalindrome(ListNode<Integer> l) {
     	    return prev;
     	}
 -----------------------------------------------------------------
+
+ListNode<Integer> mergeTwoLinkedLists(ListNode<Integer> l1, ListNode<Integer> l2) {
+    ListNode<Integer> solu = new ListNode<Integer>(0);
+    ListNode<Integer> head = solu;
+    if(l1 == null && l2 != null){
+        return l2;
+    }
+    if(l1 != null && l2 == null){
+        return l1;
+    }
+    if(l1 == null && l2 == null){
+        return l1;
+    }
+    while(!(l1 == null && l2 == null)){
+        ListNode<Integer> tmp = new ListNode<Integer>(0);
+        if(l1 != null && l2 == null){
+            solu.value = l1.value;
+            if(l1.next != null){
+                solu.next = tmp;
+                solu = solu.next;
+            }
+            l1 = l1.next;
+        }
+        else if(l1 == null && l2 != null){
+            solu.value = l2.value;
+            if(l2.next != null){
+                solu.next = tmp;
+                solu = solu.next;
+            }
+            l2 = l2.next;
+        }
+        else if(l1.value <= l2.value){
+            solu.value = l1.value;
+            solu.next = tmp;
+            solu = solu.next;
+            l1 = l1.next;
+        }
+        else if(l1.value > l2.value){
+            solu.value = l2.value;
+            solu.next = tmp;
+            solu = solu.next;
+            l2 = l2.next;
+        }
+    }
+    return head;
+}
+-----------------------------------
+// Singly-linked lists are already defined with this interface:
+// class ListNode<T> {
+//   ListNode(T x) {
+//     value = x;
+//   }
+//   T value;
+//   ListNode<T> next;
+// }
+//
+ListNode<Integer> reverseNodesInKGroups(ListNode<Integer> l, int k) {
+    if(l == null){
+        return l;
+    }
+    ListNode<Integer> tmp = new ListNode<Integer>(0);
+    tmp.next = l;
+    ListNode<Integer> prev = tmp;
+    int i = 0;
+    ListNode<Integer> x = l;
+    while(x != null){
+        i++;
+        if(i%k == 0){
+            prev = reverse(prev, x.next);
+            x = prev.next;
+        }
+        else{
+            x = x.next;
+        }
+    }
+    return tmp.next;
+}
+
+ListNode<Integer> reverse(ListNode<Integer> l, ListNode<Integer> j){
+    ListNode<Integer> tmp = l.next;
+    ListNode<Integer> curr = tmp.next;
+    while(curr != j){
+        tmp.next = curr.next;
+        curr.next = l.next;
+        l.next = curr;
+        curr = tmp.next;
+    }
+
+    return tmp;
+}
+------------------------------------------
+// Singly-linked lists are already defined with this interface:
+// class ListNode<T> {
+//   ListNode(T x) {
+//     value = x;
+//   }
+//   T value;
+//   ListNode<T> next;
+// }
+//
+ListNode<Integer> rearrangeLastN(ListNode<Integer> l, int n) {
+	    if(l==null || n==0) return l;
+	    ListNode<Integer> temp = l;
+	    int len=1;
+	    while(temp.next!=null){
+	        temp= temp.next;
+	        len++;
+	    }
+	    temp.next = l;
+	    n= n%len;
+	    for(int i=0; i<(len-n); i++){
+	        temp= temp.next;
+	    }
+	    l= temp.next;
+	    temp.next=null;
+	    return l;
+	}
+---------------------------------------
