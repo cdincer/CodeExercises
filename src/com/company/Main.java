@@ -6,9 +6,20 @@ import java.util.stream.IntStream;
 public class Main {
 
     public static void main(String[] args) {
-String inner="pwwke";
+        /*
+        Input: "abcabcbb"
+        Output: 3
+        Input: "bbbbb"
+        Output: 1
+        Input: "pwwkew"
+        Output: 3
+        "aab" output:2
+
+         */
+String inner="abcabcbb";
       int result=  lengthOfLongestSubstring(inner);
 
+      System.out.println(result);
     }
 
 
@@ -34,9 +45,12 @@ String inner="pwwke";
             }
             else
             {
-
                 result.add(CharArray[i]);
                 CurrCounter++;
+                if(CurrCounter>HighestCounter)
+                {
+                    HighestCounter=CurrCounter;
+                }
             }
         }
 
