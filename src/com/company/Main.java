@@ -14,6 +14,8 @@ public class Main {
         Input: "pwwkew"
         Output: 3
         "aab" output:2
+        " "  output:1
+        "   "  output:1
 
          */
 String inner="abcabcbb";
@@ -24,39 +26,24 @@ String inner="abcabcbb";
 
 
     public static int lengthOfLongestSubstring(String s) {
-
-        char[] CharArray = s.toCharArray();
-        Set<Character> result = new HashSet();
-        int CurrCounter=0;
-        int HighestCounter=0;
-
-        for(int i=0; i<CharArray.length; i++)
-        {
-            if(result.contains(CharArray[i]))
-            {
-                result = new HashSet();
-
-                if(CurrCounter>HighestCounter)
-                {
-                    HighestCounter=CurrCounter;
-                }
-                CurrCounter=0;
-
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        int ans = 0, i = 0, j = 0;
+        while (i < n && j < n) {
+            // try to extend the range [i, j]
+            if (!set.contains(s.charAt(j))){
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
             }
-            else
-            {
-                result.add(CharArray[i]);
-                CurrCounter++;
-                if(CurrCounter>HighestCounter)
-                {
-                    HighestCounter=CurrCounter;
-                }
+            else {
+                set.remove(s.charAt(i++));
             }
         }
-
-
-        return HighestCounter;
+        return ans;
     }
+
+
+
 
     public static class ListNode {
         int val;
