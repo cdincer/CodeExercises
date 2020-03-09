@@ -18,39 +18,36 @@ public class Main {
         "   "  output:1
 
          */
-String inner="abcabcbb";
-      int result=  lengthOfLongestSubstring(inner);
+String inner="abacdgfdcaba";
+      String result=  longestPalindrome(inner);
 
       System.out.println(result);
     }
 
 
-    public static int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        Set<Character> set = new HashSet<>();
-        int ans = 0, i = 0, j = 0;
-        while (i < n && j < n) {
-            // try to extend the range [i, j]
-            if (!set.contains(s.charAt(j))){
-                set.add(s.charAt(j++));
-                ans = Math.max(ans, j - i);
-            }
-            else {
-                set.remove(s.charAt(i++));
+    public static String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) return "";
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
             }
         }
-        return ans;
+        return s.substring(start, end + 1);
     }
 
-
-
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
+    private static int expandAroundCenter(String s, int left, int right) {
+        int L = left, R = right;
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+            L--;
+            R++;
+        }
+        return R - L - 1;
     }
-
 }
 
 
