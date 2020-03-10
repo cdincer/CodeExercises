@@ -20,17 +20,17 @@ public class Main {
 //floors loop inner because main  constraint is zeroes nulling the floors down. We start at top and move down
 //Anything goes wrong break the floor search.
     public static int matrixElementsSum(int[][] matrix) {
-        int sum =0;
-        for(int i =0; i<matrix[0].length;i++) { // go through rows
-            for(int j=0; j<matrix.length;j++) { //go through floors
-                if(matrix[j][i] > 0)
-                    sum +=matrix[j][i];
-                else
-                    break;
+        int rooms = matrix[0].length;
+        int floors = matrix.length;
+        int sum = 0;
+        for(int i = 0; i < rooms; i++) {
+            for(int j = 0; j < floors && matrix[j][i] > 0; j++) {
+                sum += matrix[j][i];
             }
         }
         return sum;
     }
+
 
 
 }
