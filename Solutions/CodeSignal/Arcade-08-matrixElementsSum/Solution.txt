@@ -32,6 +32,18 @@ public class Main {
         return sum;
     }
 
+//Alternative breaker For condition
+ public static int matrixElementsSum2(int[][] matrix) {
+        int rooms = matrix[0].length;
+        int floors = matrix.length;
+        int sum = 0;
+        for(int i = 0; i < rooms; i++) {
+            for(int j = 0; j < floors && matrix[j][i] > 0; j++) {
+                sum += matrix[j][i];
+            }
+        }
+        return sum;
+    }
 
 }
 

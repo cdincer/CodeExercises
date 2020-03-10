@@ -12,6 +12,13 @@ public class Main {
                 int[][] matrix = {{0,1,1,2},{0,5,0,0},{2,0,3,3}}; // 9
 
          */
+        /* i
+           0 1 2 3
+    j   0 {0,1,1,2},
+        1 {0,5,0,0},
+        2 {2,0,3,3}
+         */
+
       int result=  matrixElementsSum(matrix);
 
       System.out.println(result);
