@@ -6,48 +6,32 @@ import java.util.stream.IntStream;
 public class Main {
 
     public static void main(String[] args) {
+        int[][] matrix = {{0,1,1,2},{0,5,0,0},{2,0,3,3}};
         /*
-        Input: "abcabcbb"
-        Output: 3
-        Input: "bbbbb"
-        Output: 1
-        Input: "pwwkew"
-        Output: 3
-        "aab" output:2
-        " "  output:1
-        "   "  output:1
+                int[][] matrix = {{4,0,1},{10,7,0},{0,0,0},{9,1,2}}; //15
+                int[][] matrix = {{0,1,1,2},{0,5,0,0},{2,0,3,3}}; // 9
 
          */
-String inner="abacdgfdcaba";
-      String result=  longestPalindrome(inner);
+      int result=  matrixElementsSum(matrix);
 
       System.out.println(result);
     }
 
 
-    public static String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) return "";
-        int start = 0, end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int len1 = expandAroundCenter(s, i, i);
-            int len2 = expandAroundCenter(s, i, i + 1);
-            int len = Math.max(len1, len2);
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
+    public static int matrixElementsSum(int[][] matrix) {
+        int sum =0;
+        for(int i =0; i<matrix[0].length;i++) {
+            for(int j=0; j<matrix.length;j++) {
+                if(matrix[j][i] > 0)
+                    sum +=matrix[j][i];
+                else
+                    break;
             }
         }
-        return s.substring(start, end + 1);
+        return sum;
     }
 
-    private static int expandAroundCenter(String s, int left, int right) {
-        int L = left, R = right;
-        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
-            L--;
-            R++;
-        }
-        return R - L - 1;
-    }
+
 }
 
 
