@@ -29,6 +29,24 @@ int[] sortByHeight(int[] a) {
 
 return a;
 }
+
+
+int[] sortByHeight2(int[] a) {
+
+    int t;
+
+    for(int i=0; i<a.length; i++)
+        for(int j=i+1; j<a.length; j++)
+            if(a[i]>a[j] && a[i]!=-1 && a[j]!=-1) {
+
+                t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+            }
+
+    return a;
+}
+
 //Get two arrays.
 //Sort one of them. when its not a -1 put the others one content in others.
 
