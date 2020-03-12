@@ -1,0 +1,52 @@
+boolean isLucky(int n) {
+
+    String StringParsing = String.valueOf(n);
+    int Half = StringParsing.length()/2;
+    int FirstHalf,SecondHalf;
+    FirstHalf=0;
+    SecondHalf=0;
+    boolean Result=false;
+    for(int i=0;i<Half;i++)
+    {
+     FirstHalf += Character.getNumericValue(StringParsing.charAt(i));
+    }
+
+     for(int i=Half;i<StringParsing.length();i++)
+    {
+     SecondHalf += Character.getNumericValue(StringParsing.charAt(i));
+    }
+
+    boolean result = (FirstHalf==SecondHalf) ? true : false;
+
+    return result;
+}
+
+
+/*
+Test 1
+Input:
+
+n: 1230
+
+Expected Output:
+
+true
+-----------
+Test 2
+Input:
+
+n: 239017
+
+Expected Output:
+
+false
+------------
+Test 3
+Input:
+
+n: 134008
+
+Expected Output:
+
+true
+*/
