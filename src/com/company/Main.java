@@ -28,7 +28,9 @@ public static String reverseInParentheses(String inputString) {
         if(comparison == '(')
         {
             if(Switch==1)
+            {
                 DoubleReverse=1;
+            }
 
             Switch=1;
         }
