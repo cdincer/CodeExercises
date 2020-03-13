@@ -15,8 +15,6 @@ String input ="foo(bar(baz))blim";
 
 
 public static String reverseInParentheses(String inputString) {
-
-
     StringBuilder MyBuilderMain = new StringBuilder();
     StringBuilder MyBuilderSpare = new StringBuilder();
     int Switch=0;
@@ -41,15 +39,19 @@ public static String reverseInParentheses(String inputString) {
             Switch=0;
             MyBuilderSpare = new StringBuilder();
         }
-        if(Switch==1 && comparison != '(' && comparison !=')')
+
+
+        if(Switch==1 && comparison != '(' && comparison !=')' && DoubleReverse==0)
         {
             MyBuilderSpare.append(String.valueOf(inputString.charAt(i)));
         }
-        if((Switch==0 && comparison != '(' && comparison !=')'))
+        else if((Switch==0 && comparison != '(' && comparison !=')') )
+        {
+            MyBuilderMain.append(String.valueOf(inputString.charAt(i)));
+        }  else if((DoubleReverse==1 && comparison != '(' && comparison !=')') )
         {
             MyBuilderMain.append(String.valueOf(inputString.charAt(i)));
         }
-
 
 
 
@@ -60,6 +62,7 @@ public static String reverseInParentheses(String inputString) {
 
     return result;
 }
+
 
 
 
