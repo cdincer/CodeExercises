@@ -45,7 +45,7 @@ public static String reverseInParentheses(String inputString) {
         {
             MyBuilderSpare.append(String.valueOf(inputString.charAt(i)));
         }
-        if((Switch==0 && comparison != '(' && comparison !=')') || (DoubleReverse==1 && comparison != '(' && comparison !=')' ))
+        if((Switch==0 && comparison != '(' && comparison !=')'))
         {
             MyBuilderMain.append(String.valueOf(inputString.charAt(i)));
         }
