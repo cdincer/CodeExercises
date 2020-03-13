@@ -6,37 +6,59 @@ import java.util.stream.IntStream;
 public class Main {
 
     public static void main(String[] args) {
-        int[][] matrix = {{0,1,1,2},{0,5,0,0},{2,0,3,3}};
-        /*
-                int[][] matrix = {{4,0,1},{10,7,0},{0,0,0},{9,1,2}}; //15
-                int[][] matrix = {{0,1,1,2},{0,5,0,0},{2,0,3,3}}; // 9
 
-         */
-        /* i
-           0 1 2 3
-    j   0 {0,1,1,2},
-        1 {0,5,0,0},
-        2 {2,0,3,3}
-         */
-
-      int result=  matrixElementsSum(matrix);
+String input ="foo(bar(baz))blim";
+      String result=  reverseInParentheses(input);
 
       System.out.println(result);
     }
 
-//floors loop inner because main  constraint is zeroes nulling the floors down. We start at top and move down
-//Anything goes wrong break the floor search.
-    public static int matrixElementsSum(int[][] matrix) {
-        int rooms = matrix[0].length;
-        int floors = matrix.length;
-        int sum = 0;
-        for(int i = 0; i < rooms; i++) {
-            for(int j = 0; j < floors && matrix[j][i] > 0; j++) {
-                sum += matrix[j][i];
-            }
+
+public static String reverseInParentheses(String inputString) {
+
+
+    StringBuilder MyBuilderMain = new StringBuilder();
+    StringBuilder MyBuilderSpare = new StringBuilder();
+    int Switch=0;
+    int DoubleReverse=0;
+    for(int i=0;i<inputString.length();i++)
+    {
+        char comparison =  inputString.charAt(i);
+
+        if(comparison == '(')
+        {
+            if(Switch==1)
+                DoubleReverse=1;
+
+            Switch=1;
         }
-        return sum;
+        else if(comparison == ')')
+        {
+            MyBuilderSpare.reverse();
+            MyBuilderMain.append(MyBuilderSpare.toString());
+            Switch=0;
+            MyBuilderSpare = new StringBuilder();
+        }
+        if(Switch==1 && comparison != '(' && comparison !=')')
+        {
+            MyBuilderSpare.append(String.valueOf(inputString.charAt(i)));
+        }
+        if((Switch==0 && comparison != '(' && comparison !=')') || (DoubleReverse==1 && comparison != '(' && comparison !=')' ))
+        {
+            MyBuilderMain.append(String.valueOf(inputString.charAt(i)));
+        }
+
+
+
+
     }
+
+    String result = MyBuilderMain.toString();
+
+
+    return result;
+}
+
 
 
 
