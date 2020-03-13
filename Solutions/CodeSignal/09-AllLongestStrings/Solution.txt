@@ -1,0 +1,46 @@
+
+/*
+Test 1
+Input:
+
+inputArray:
+["aba",
+ "aa",
+ "ad",
+ "vcd",
+ "aba"]
+
+Expected Output:
+
+["aba",
+ "vcd",
+ "aba"]
+
+ Test 5
+ Input:
+
+ inputArray:
+ ["enyky",
+  "benyky",
+  "yely",
+  "varennyky"]
+
+ Expected Output:
+
+ ["varennyky"]
+*/
+String[] allLongestStrings(String[] inputArray) {
+
+    String l = ""; //full string with "-" separator
+
+    for( String s: inputArray )
+    {
+        //length is first index of substring
+        //if list has same size strings, add this one
+        if( l.indexOf("-") == s.length() ) l += s + "-";
+        //reset if list has smaller strings
+        else if ( l.indexOf("-") < s.length() ) l = s + "-";
+    }
+
+    return l.split( "-" );
+}
