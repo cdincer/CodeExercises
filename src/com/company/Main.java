@@ -8,60 +8,42 @@ public class Main {
     public static void main(String[] args) {
 
 String input ="foo(bar(baz))blim";
-      String result=  reverseInParentheses(input);
 
-      System.out.println(result);
     }
 
 
-public static String reverseInParentheses(String inputString) {
-    StringBuilder MyBuilderMain = new StringBuilder();
-    StringBuilder MyBuilderSpare = new StringBuilder();
-    int Switch=0;
-    int DoubleReverse=0;
-    for(int i=0;i<inputString.length();i++)
+public static boolean areSimilar(int[] a, int[] b) {
+    boolean Result = false;
+    Object[] Arr1= new Object[] {a};
+    Object[] Arr2= new Object[] {b};
+    int temp=0;
+    if(Arrays.equals(a, b) )
     {
-        char comparison =  inputString.charAt(i);
-
-        if(comparison == '(')
-        {
-            if(Switch==1)
-            {
-                DoubleReverse=1;
-            }
-
-            Switch=1;
-        }
-        else if(comparison == ')')
-        {
-            MyBuilderSpare.reverse();
-            MyBuilderMain.append(MyBuilderSpare.toString());
-            Switch=0;
-            MyBuilderSpare = new StringBuilder();
-        }
-
-
-        if(Switch==1 && comparison != '(' && comparison !=')' && DoubleReverse==0)
-        {
-            MyBuilderSpare.append(String.valueOf(inputString.charAt(i)));
-        }
-        else if((Switch==0 && comparison != '(' && comparison !=')') )
-        {
-            MyBuilderMain.append(String.valueOf(inputString.charAt(i)));
-        }  else if((DoubleReverse==1 && comparison != '(' && comparison !=')') )
-        {
-            MyBuilderMain.append(String.valueOf(inputString.charAt(i)));
-        }
-
-
-
+        return   Result = true;
     }
+    else
+    {
+        for(int i=0;i<b.length;i++)
+            for(int j=0;j<b.length;j++)
+            {
+                temp=b[i];
+                b[i]=b[j];
+                b[j]=temp;
+                if(Arrays.equals(a,b))
+                {
+                    return true;
+                }else
+                {
+                    b[j]=b[i];
+                    b[i]=temp;
 
-    String result = MyBuilderMain.toString();
+                }
+            }
+    }
+    return false;
 
-
-    return result;
 }
+
 
 
 
