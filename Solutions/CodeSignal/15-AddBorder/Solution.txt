@@ -1,0 +1,94 @@
+String[] addBorder(String[] picture) {
+    String startFrame="";
+    int lengthRow = (picture[0].length() +2);
+
+    String[] newArray = new String[picture.length+2];
+
+    for(int i=0;i<picture.length;i++)
+        {
+            StringBuilder NewString= new StringBuilder();
+            NewString.append(picture[i].toString());
+            NewString.append('*');
+            NewString.insert(0,'*');
+            picture[i] = NewString.toString();
+        }
+
+    for(int j=0;j<lengthRow;j++)
+    {
+    startFrame+="*";
+    }
+
+    newArray[0]=startFrame;
+    newArray[newArray.length-1]=startFrame;
+
+int j=1;
+for(int i=0;i<picture.length;i++)
+{
+    newArray[j] = picture[i];
+    j++;
+}
+
+
+
+return newArray;
+}
+
+
+/*
+Test 1
+Input:
+
+picture:
+["abc",
+ "ded"]
+
+Expected Output:
+
+["*****",
+ "*abc*",
+ "*ded*",
+ "*****"]
+
+ Test 2
+ Input:
+
+ picture: ["a"]
+
+ Expected Output:
+
+ ["***",
+  "*a*",
+  "***"]
+
+ Test 4
+ Input:
+
+ picture:
+ ["abcde",
+  "fghij",
+  "klmno",
+  "pqrst",
+  "uvwxy"]
+
+ Expected Output:
+
+ ["*******",
+  "*abcde*",
+  "*fghij*",
+  "*klmno*",
+  "*pqrst*",
+  "*uvwxy*",
+  "*******"]
+
+
+  Test 5
+  Input:
+
+  picture: ["wzy**"]
+
+  Expected Output:
+
+  ["*******",
+   "*wzy***",
+   "*******"]
+*/
