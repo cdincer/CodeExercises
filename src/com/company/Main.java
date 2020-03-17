@@ -52,6 +52,9 @@ public static boolean palindromeRearranging(String inputString) {
     if(SingleValue>1)
         Result=false;
 
+    if(ItemsMap.size() == 1)
+        Result=true;
+
     return Result;
 
 }
