@@ -7,42 +7,56 @@ public class Main {
 
     public static void main(String[] args) {
 
-String input ="foo(bar(baz))blim";
+String input ="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbccccaaaaaaaaaaaaa";
+
+boolean Result =palindromeRearranging(input);
 
     }
 
 
-public static boolean areSimilar(int[] a, int[] b) {
-    boolean Result = false;
-    Object[] Arr1= new Object[] {a};
-    Object[] Arr2= new Object[] {b};
-    int temp=0;
-    if(Arrays.equals(a, b) )
+public static boolean palindromeRearranging(String inputString) {
+    HashMap<Character,Integer> ItemsMap= new HashMap<Character,Integer>();
+    int TempValue =0;//Carrier of replacement items
+    int SingleValue=0;//Counting middle bit
+    Character TempCharacter=' ';
+    boolean Result=true;
+
+    for(int i=0;i<inputString.length();i++)
     {
-        return   Result = true;
+        if(ItemsMap.containsKey(inputString.charAt(i)))
+        {
+            TempValue=ItemsMap.get(inputString.charAt(i));
+            ItemsMap.remove(inputString.charAt(i));
+            TempCharacter=inputString.charAt(i);
+            TempValue++;//We found one more add to it
+            ItemsMap.put(TempCharacter, TempValue);
+        }else
+        {
+            ItemsMap.put(inputString.charAt(i),1);
+        }
     }
-    else
-    {
-        for(int i=0;i<b.length;i++)
-            for(int j=0;j<b.length;j++)
-            {
-                temp=b[i];
-                b[i]=b[j];
-                b[j]=temp;
-                if(Arrays.equals(a,b))
-                {
-                    return true;
-                }else
-                {
-                    b[j]=b[i];
-                    b[i]=temp;
 
-                }
-            }
+    for(Map.Entry<Character,Integer> MyEntry : ItemsMap.entrySet())
+    {
+        TempValue=MyEntry.getValue();
+
+        if(TempValue %2 ==1 && TempValue>1)
+        {
+            Result= false;
+        } else if(TempValue ==1)
+        {
+            SingleValue ++;
+        }
     }
-    return false;
+
+    if(SingleValue>1)
+        Result=false;
+
+    return Result;
 
 }
+
+
 
 
 
