@@ -15,3 +15,30 @@ int avoidObstacles(int[] inputArray) {
 
     return jump;
 }
+/*
+Test 1
+
+Input:
+
+inputArray: [5, 3, 6, 7, 9]
+
+Expected Output:
+
+4
+
+Test 2
+Input:
+
+inputArray: [2, 3]
+
+Expected Output:
+
+4
+
+Test 3
+Input:
+
+inputArray: [1, 4, 10, 6, 2]
+
+Expected Output:
+*/
