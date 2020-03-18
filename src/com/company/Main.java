@@ -8,68 +8,61 @@ public class Main {
     public static void main(String[] args) {
 
 String input ="64.233.161.00";
-
-boolean Result =isIPv4Address(input);
-
+        int[][] arr = {{7, 4, 0, 1}, 
+         {5, 6, 2, 2}, 
+         {6, 10, 7, 8}, 
+         {1, 4, 2, 0}};
+        int[][] arr2 = {{1, 1, 1}, 
+         {1, 7, 1}, 
+         {1, 1, 1}};
+        int[][] arr3=boxBlur(arr);
     }
 
 
-public static boolean isIPv4Address(String inputString) {
-    boolean Result=true;
-    String[] NewArray=  inputString.split("\\.");
-    int TempIP=0;
+public static int[][] boxBlur(int[][] image) {
+    ArrayList<Integer> MyList= new ArrayList<Integer>();
 
-    if(NewArray.length ==4)
+    int RowLength = (image.length-2)*(image.length-2);
+    int[][] centeredimage = new int[RowLength][RowLength];
+    int sum=0;
+    int mainX,mainY;
+    mainX=1;
+    mainY=1;
+    for(int i=0;i<image.length;i++)
     {
-        for(int i=0;i<NewArray.length ;i++)
+
+        for(int j=0;j<image[i].length;j++)
         {
-            if(!NewArray[i].isEmpty()  && NewArray[i] !=null && CheckIfInteger(NewArray[i]))
+            System.out.println("Value for"+i+" "+j);
+            sum+= image[i][j];
+            if(mainX % 3 ==0 && mainY == 3)
             {
-                TempIP=Integer.parseInt(NewArray[i]);
-                if(TempIP<0|| TempIP>255)
-                {
-                    Result=false;
-                }
-            }else
-                Result=false;
-        }
-    }else
-    {
-        Result=false;
-    }
-
-    return Result;
-}
-
-    public static boolean CheckIfInteger(String Item)
-    {
-        boolean Result=false;
-   /* int ItemAtIndex=0;
-    char TempChar='a';
-    String TempString="";*/
-
-        try
-        {
-            // checking valid integer using parseInt() method
-            if(Item.length()>1 && Item.charAt(0) == '0')
-                Result=false;
-            else
-                {
-
-                Integer.parseInt(Item);
-                Result = true;
+                MyList.add(sum/9);
+                sum=0;
+                mainY=1;
             }
+            mainY++;
         }
-        catch (NumberFormatException e)
-        {
-            Result=false;
-        }
-
-        return Result;
-
+        mainX++;
     }
 
 
+//(n-2)^2, n is the row number.
+
+    int counter=0;
+    for(int x=0;x<RowLength;x++)
+    {
+        for(int y=0;y<RowLength;y++)
+        {
+            centeredimage[x][y]=MyList.get(counter);
+            counter++;
+        }
+    }
+
+
+    return centeredimage;
+
+}
 
 
 
