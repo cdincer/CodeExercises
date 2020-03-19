@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int [] inputArray = {5, 3, 6, 7, 9};
+        int [] inputArray = {1, 4, 10, 6, 2};
 String input ="64.233.161.00";
         int[][] arr = {{7, 4, 0, 1}, 
          {5, 6, 2, 2}, 
@@ -16,8 +16,8 @@ String input ="64.233.161.00";
         int[][] arr2 = {{1, 1, 1}, 
          {1, 7, 1}, 
          {1, 1, 1}};
- //       int[][] arr3=boxBlur(arr);
-int sum = avoidObstacles(inputArray);
+        int[][] arr3=boxBlur(arr2);
+//int sum = avoidObstacles(inputArray);
 
 
     }
