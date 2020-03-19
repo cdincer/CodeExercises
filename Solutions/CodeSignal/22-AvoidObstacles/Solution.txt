@@ -1,3 +1,5 @@
+//Find the smallest number that can't divide the input array.
+//Go through the array and keep dividing. If you found even one that can divide,break.
 int avoidObstacles(int[] inputArray) {
 
     int jump = 1;
@@ -19,26 +21,19 @@ int avoidObstacles(int[] inputArray) {
 Test 1
 
 Input:
-
 inputArray: [5, 3, 6, 7, 9]
-
-Expected Output:
-
-4
+Expected Output:4
 
 Test 2
-Input:
-
-inputArray: [2, 3]
-
-Expected Output:
-
-4
+Input:inputArray: [2, 3]
+Expected Output:4
 
 Test 3
-Input:
+Input:inputArray: [1, 4, 10, 6, 2]
+Expected Output:7
 
-inputArray: [1, 4, 10, 6, 2]
+Test 4
+Input:inputArray: [1000, 999]
+Expected Output:6
 
-Expected Output:
 */
