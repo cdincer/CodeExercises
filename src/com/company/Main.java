@@ -16,7 +16,7 @@ String input ="64.233.161.00";
         int[][] arr2 = {{1, 1, 1}, 
          {1, 7, 1}, 
          {1, 1, 1}};
-        int[][] arr3=boxBlur(arr2);
+        int[][] arr3=boxBlur(arr);
 //int sum = avoidObstacles(inputArray);
 
 
@@ -25,9 +25,11 @@ String input ="64.233.161.00";
 
 public static int[][] boxBlur(int[][] image) {
     int[][] result = new int[image.length-2][image[0].length-2];
+    int counter=0;
     for (int i = 1; i < image.length-1; i++) {
         for (int j = 1; j < image[i].length-1; j++) {
             result[i-1][j-1] = avg(image, i, j);
+            counter ++;
         }
     }
     return result;
