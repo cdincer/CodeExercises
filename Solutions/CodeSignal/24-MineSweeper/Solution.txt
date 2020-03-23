@@ -1,0 +1,12 @@
+ int[][] minesweeper(boolean[][] matrix) {
+
+        int[][] a = new int[matrix.length][matrix[0].length];
+
+        return a;
+    }
+
+    int Miner(int x,int y,boolean[][] matrix)
+    { int Mines=0;
+
+      return Mines;
+    }
