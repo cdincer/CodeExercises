@@ -1,0 +1,33 @@
+
+/*
+Given two cells on the standard chess board, determine whether they have the same color or not.
+
+Example
+
+    For cell1 = "A1" and cell2 = "C3", the output should be
+    chessBoardCellColor(cell1, cell2) = true.
+
+    Test 2
+    Input:
+
+    cell1: "A1"
+    cell2: "H3"
+
+    Expected Output:
+
+    false
+
+    Test 3
+    Input:
+
+    cell1: "A1"
+    cell2: "A2"
+
+    Expected Output:
+
+    false
+
+*/
+boolean chessBoardCellColor(String cell1, String cell2) {
+    return Math.abs(cell1.charAt(0) - cell2.charAt(0)) % 2 == Math.abs(cell1.charAt(1) - cell2.charAt(1)) % 2;
+}
