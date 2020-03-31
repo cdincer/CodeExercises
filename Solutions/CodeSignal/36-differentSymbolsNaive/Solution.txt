@@ -1,0 +1,42 @@
+int differentSymbolsNaive(String s)
+{
+    return (int) s.chars().distinct().count();
+}
+
+/*
+Given a string, find the number of different characters in it.
+
+Example
+
+For s = "cabca", the output should be
+differentSymbolsNaive(s) = 3.
+
+There are 3 different characters a, b and c.
+
+
+
+Test 1
+Input:
+
+s: "cabca"
+
+Expected Output:3
+
+Test 2
+Input:
+
+s: "aba"
+
+Expected Output:
+
+2
+
+Test 4
+Input:
+
+s: "bcaba"
+
+Expected Output:
+
+3
+*/

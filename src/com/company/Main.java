@@ -6,32 +6,35 @@ import java.util.stream.IntStream;
 public class Main {
 
     public static void main(String[] args) {
+        int[] inputArray = {1,3,2,4};
 
 
-        String XCoor,YCoor;
-        XCoor="A1";
-        YCoor="B2";
-        int Result =  depositProfit(1, 100, 64);
+        int Result =  arrayMaxConsecutiveSum(inputArray,3);
         System.out.println(Result);
 
     }
 
 
- public static   int depositProfit(int deposit, int rate, int threshold) {
-
-        int investedyears=0;
-        while(threshold>deposit)
+ public static    int arrayMaxConsecutiveSum(int[] inputArray, int k) {
+        int TempLargest=0;
+        int Container=0;
+        for(int i=0;i<inputArray.length-k;i++)
         {
-            deposit = deposit+((deposit/100)*rate);
-
-            if(deposit>threshold)
-                return investedyears;
-
-            investedyears++;
+            Container=0;
+            for(int j=i;j<i+k;j++)
+            {
+                Container+=inputArray[j];
+            }
+            if(Container> TempLargest)
+            {
+                TempLargest = Container ;
+            }
         }
 
-        return investedyears;
+
+        return TempLargest;
     }
+
 
 }
 

@@ -75,7 +75,7 @@ void findSequence(String[] a, String prev, boolean[] used, int n) {
             findSequence(a, a[i], used, n+1);
             used[i] = false;
         }
-    }da
+    }
 }
 
 boolean differByOne(String a, String b) {
