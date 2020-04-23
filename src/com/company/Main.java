@@ -6,73 +6,33 @@ import java.util.stream.IntStream;
 public class Main {
 
     public static void main(String[] args) {
+        int[] inputArray = {1,3,2,4};
 
 
-        String XCoor,YCoor;
-        XCoor="A1";
-        YCoor="B2";
-boolean Result =chessBoardCellColor(XCoor,YCoor);
+        int Result =  arrayMaxConsecutiveSum(inputArray,3);
+        System.out.println(Result);
 
     }
 
 
- public static   boolean chessBoardCellColor(String cell1, String cell2) {
-        Boolean resut=false;
-        //  return Math.abs(cell1.charAt(0) - cell2.charAt(0)) % 2 == Math.abs(cell1.charAt(1) - cell2.charAt(1)) % 2;
-
-        String CellResult1 = BlackorWhite(cell1);
-        String CellResult2 = BlackorWhite(cell2);
-        System.out.println("Cell Result1 + "+ CellResult1);
-        System.out.println("Cell Result2 + "+ CellResult2);
-
-        if(CellResult1 == CellResult2)
-            resut=true;
-        else
-            resut = false;
-
-        return resut;
-    }
-
-
-    public static  String BlackorWhite(String Entry)
-    {
-        HashMap<Character,Integer> ChessBoard = new HashMap<Character,Integer>();
-        Integer TotalValue=0;
-        ChessBoard.put('A',1);
-        ChessBoard.put('B',2);
-        ChessBoard.put('C',3);
-        ChessBoard.put('D',4);
-        ChessBoard.put('E',5);
-        ChessBoard.put('F',6);
-        ChessBoard.put('G',7);
-        ChessBoard.put('H',8);
-        String DefaultPoint = "White";
-        Integer CellValue = ChessBoard.get(Entry.charAt(0));
-        Character FirstCharacter =  Entry.charAt(0);
-        if(FirstCharacter == 'A')
+ public static    int arrayMaxConsecutiveSum(int[] inputArray, int k) {
+        int TempLargest=0;
+        int Container=0;
+        for(int i=0;i<inputArray.length-k;i++)
         {
-            TotalValue = Integer.valueOf(Character.toString( Entry.charAt(1)));
-        }else
-        {
-            TotalValue = CellValue + (8* Integer.valueOf(Character.toString( Entry.charAt(1))));
-
-        }
-
-        System.out.println("Total cell value "+ TotalValue);
-
-        for(int i=1;i<TotalValue;i++)
-        {
-            if(DefaultPoint == "Black")
+            Container=0;
+            for(int j=i;j<i+k;j++)
             {
-                DefaultPoint = "White";
-            } else
+                Container+=inputArray[j];
+            }
+            if(Container> TempLargest)
             {
-                DefaultPoint = "Black";
+                TempLargest = Container ;
             }
         }
 
-        Entry = DefaultPoint;
-        return Entry;
+
+        return TempLargest;
     }
 
 
