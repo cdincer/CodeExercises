@@ -1,25 +1,13 @@
 class Solution {
-    public void rotate(int[] nums, int k) {
-        int temp=0;
-        for(int i=0;i<nums.length-k;i++)
-        {
-            temp=nums[i+k];
-            nums[i+k]=nums[i];
-
-            if(i+k+k>nums.length)
-            {
-            nums[i+k+k-nums.length]=temp;
-            }
-            else
-            {
-                  nums[i+k+k-1]=temp;
-            }
-
-
-        }
-
-
+  public void rotate(int[] nums, int k) {
+    int[] a = new int[nums.length];
+    for (int i = 0; i < nums.length; i++) {
+      a[(i + k) % nums.length] = nums[i];
     }
+    for (int i = 0; i < nums.length; i++) {
+      nums[i] = a[i];
+    }
+  }
 }
 
 //First transition is where we move the first element,x number of steps,thats completed
