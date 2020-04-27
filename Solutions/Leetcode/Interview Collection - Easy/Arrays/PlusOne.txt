@@ -1,21 +1,5 @@
-package com.company;
-
-import java.util.*;
-import java.util.stream.IntStream;
-
-public class Main {
-
-    public static void main(String[] args) {
-        int[] inputArray = {1,2,3,4,5,6,7};
-        int[] inputArray2 = {8,9,9,9};
-
-        int[] inputArray3 =  plusOne(inputArray2);
-         String aaa = Arrays.toString(inputArray3);
-System.out.println(aaa);
-    }
-
-
-    public static int[] plusOne(int[] digits) {
+class Solution {
+    public int[] plusOne(int[] digits) {
         int Carry=0;
         int i=2;
         int[] digits2;
@@ -26,7 +10,7 @@ System.out.println(aaa);
             Carry=1;
             digits[digits.length-1]=0;
 
-            while(Carry==1 && i<digits.length)
+            while(Carry==1 && i<=digits.length)
             {
                 digits[digits.length-i]=digits[digits.length-i]+1;
                 if(digits[digits.length-i]<10)
@@ -37,13 +21,14 @@ System.out.println(aaa);
                 {
                     Carry=1;
                     digits[digits.length-i]=0;
-                    i++;
+                      i++;
+
                 }
             }
 
         }
 
-        if(digits[0]==0 )
+        if(digits[0]==0)
         {
             digits2 = new int[digits.length+1];
             digits2[0]=1;
@@ -61,8 +46,4 @@ System.out.println(aaa);
 
         return digits;
     }
-
-
 }
-
-
