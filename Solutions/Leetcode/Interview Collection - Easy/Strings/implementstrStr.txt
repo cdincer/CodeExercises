@@ -1,0 +1,34 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int result=-1;
+        int needleL=needle.length();
+        int haystackL=haystack.length();
+        String test="";
+        result= haystack.indexOf(needle) !=-1 ? 0 : -1; //true
+
+        if(result==-1)
+            return -1;
+        else
+        {
+            for(int i=0;i<haystackL;i++)
+            {
+                 StringBuilder strBuilder = new StringBuilder();
+                for(int y=0;y<needleL;y++)
+                {
+                  strBuilder.append(haystack.charAt(i+y));
+                }
+
+                test=strBuilder.toString();
+                if(test.equals(needle))
+                {
+                    result=i;
+                    return result;
+                }
+
+            }
+        }
+
+
+        return result;
+    }
+}

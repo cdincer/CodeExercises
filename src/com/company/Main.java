@@ -6,50 +6,51 @@ import java.util.stream.IntStream;
 public class Main {
 
     public static void main(String[] args) {
+        String result="";
         int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
         int[] inputArray2 = {8, 9, 9, 9};
         char[] reverser = {'H', 'e', 'l', 'l', 'o'};
         char[] reverser2 = {'1', '2', '3', '4', '5'};
+        String[] items= {"flower","flow","flight"};
+        String[] items2= {"aa","aa"};
+
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
-        String aaa = "testcase";
-
-        firstUniqChar(aaa);
-        System.out.println(aaa);
+        String aaa = "mississippi";
+        String bbb = "pi";
+        String ccc= longestCommonPrefix(items2);
+        System.out.println(ccc);
     }
 
 
-    public static int firstUniqChar(String s) {
 
-        HashMap<Character, Integer> OItem = new HashMap<Character, Integer>();
-        int spot = -1;
-        for (int i = 0; i < s.length(); i++) {
-            if (OItem.containsKey(s.charAt(i))) {
+   public static String longestCommonPrefix(String[] strs) {
 
-                OItem.remove(s.charAt(i));
-                OItem.put(s.charAt(i), i);
+        if(strs.length==0)
+            return "";
 
-            } else {
-                spot = i;
-                OItem.put(s.charAt(i), i);
+        int[] Items = new int[255];
+
+        for(int i=0;i<strs.length;i++)
+        {
+            for(int y=0;y<strs[i].length();y++)
+            {
+                Items[strs[i].charAt(y)]+=1;
             }
         }
 
-
-        Iterator<Map.Entry<Character, Integer>> it = OItem.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<Character, Integer> pair = it.next();
-
-
-            if (spot == -1)
-                spot = pair.getValue();
-
-            if (spot > pair.getValue())
-                spot = pair.getValue();
+        StringBuilder item = new StringBuilder();
+        String Tester= strs[0].toString();
+        for(int i=0;i<Tester.length();i++)
+        {
+            if(Items[Tester.charAt(i)]==strs.length)
+            {
+                item.append(Tester.charAt(i));
+            }
         }
+        Tester = item.toString();
 
-
-        return spot;
+        return Tester;
     }
 
 

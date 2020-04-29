@@ -1,0 +1,53 @@
+class Solution {
+    //Faster solution.
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length())
+            return false;
+      char[]ch=s.toCharArray();
+        char[]ch1=t.toCharArray();
+
+
+      Arrays.sort(ch);
+        Arrays.sort(ch1);
+        for(int i=0;i<s.length();i++)
+        {
+            if(ch[i]!=ch1[i])
+                return false;
+        }
+        return true;
+
+
+    }
+
+        //my solution.
+      public  boolean isAnagram2(String s, String t) {
+            s= s.replaceAll(" ","");
+            t=t.replaceAll(" ","");
+
+            int[] items1= new int[255];
+            int[] items2= new int[255];
+            boolean Result=true;
+
+            if(s.length()!=t.length())
+                return false;
+            for(int i=0;i<s.length();i++)
+            {
+                items1[s.charAt(i)]+=1;
+                items2[t.charAt(i)]+=1;
+
+            }
+
+
+            for(int i=0;i<s.length();i++)
+            {
+                if( items1[s.charAt(i)] != items2[s.charAt(i)])
+                {
+                    return false;
+                }
+            }
+
+
+            return Result;
+
+        }
+}
