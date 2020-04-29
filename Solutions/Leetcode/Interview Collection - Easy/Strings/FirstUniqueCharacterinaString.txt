@@ -1,5 +1,9 @@
 class Solution {
     public int firstUniqChar(String s) {
+/*
+The getOrDefault(key, defaultValue) method of Properties class is used to get the value mapped to this key, passed as the parameter, in this Properties object.
+This method will fetch the corresponding value to this key, if present, and return it. If there is no such mapping, then it returns the defaultValue.
+*/
         HashMap<Character, Integer> count = new HashMap<Character, Integer>();
         int n = s.length();
         // build hash map : character and how often it appears
@@ -15,10 +19,33 @@ class Solution {
         }
         return -1;
     }
+//use Character conversion to add items to array and go through at the end to find the lowest one
+//An array item is initiated with a array pointer. Go through the same array again to see their counts. With a pointer showing the location.
+      public int firstUniqChar2(String s) {
+
+            int[] characterCount = new int[255];
+
+
+            for(int i=0; i<s.length(); i++){
+                characterCount[s.charAt(i)] += 1;
+            }
+
+
+            for(int i=0; i<s.length(); i++){
+                if(characterCount[s.charAt(i)]==1){
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+
+
+
+
 }
 
 
-/*
-The getOrDefault(key, defaultValue) method of Properties class is used to get the value mapped to this key, passed as the parameter, in this Properties object.
-This method will fetch the corresponding value to this key, if present, and return it. If there is no such mapping, then it returns the defaultValue.
-*/
+
+
+
