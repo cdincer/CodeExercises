@@ -17,40 +17,43 @@ public class Main {
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
         String aaa = "mississippi";
-        String bbb = "pi";
-        String ccc= longestCommonPrefix(items2);
+        String bbb = "pa";
+        int ccc= strStr(aaa,bbb);
         System.out.println(ccc);
     }
 
 
+    public static int strStr(String haystack, String needle) {
+        int result=-1;
+        int needleL=needle.length();
+        int haystackL=haystack.length();
+        String test="";
+        result= haystack.indexOf(needle) !=-1 ? 0 : -1; //true
 
-   public static String longestCommonPrefix(String[] strs) {
-
-        if(strs.length==0)
-            return "";
-
-        int[] Items = new int[255];
-
-        for(int i=0;i<strs.length;i++)
+        if(result==-1)
+            return -1;
+        else
         {
-            for(int y=0;y<strs[i].length();y++)
+            for(int i=0;i<haystackL;i++)
             {
-                Items[strs[i].charAt(y)]+=1;
+                StringBuilder strBuilder = new StringBuilder();
+                for(int y=0;y<needleL;y++)
+                {
+                    strBuilder.append(haystack.charAt(i+y));
+                }
+
+                test=strBuilder.toString();
+                if(test.equals(needle))
+                {
+                    result=i;
+                    return result;
+                }
+
             }
         }
 
-        StringBuilder item = new StringBuilder();
-        String Tester= strs[0].toString();
-        for(int i=0;i<Tester.length();i++)
-        {
-            if(Items[Tester.charAt(i)]==strs.length)
-            {
-                item.append(Tester.charAt(i));
-            }
-        }
-        Tester = item.toString();
 
-        return Tester;
+        return result;
     }
 
 
