@@ -1,0 +1,39 @@
+
+//Runtime: 5 ms, faster than 93.70% of Java online submissions for Minimum Increment to Make Array Unique.
+public int minIncrementForUnique3(int[] A) {
+        int[] freq = new int[70000];
+        int moves = 0;
+
+        for (int num : A)
+            freq[num]++;
+
+//You use the array freq numbers as a moving window
+//You keep adding duplicate numbers forward, they become moves(increments in that number)
+        for (int i = 0; i < freq.length; i++) {
+            if (freq[i] <= 1)
+                continue;
+            int diff = freq[i] - 1;
+            moves += diff;
+            freq[i + 1] += diff;
+        }
+
+        return moves;
+    }
+
+
+
+    public int minIncrementForUnique4(int[] A) {
+        int N = A.length;
+        int[] count = new int[N*2];
+        for(int i=0; i<N; i++) {
+            count[A[i]]++;
+        }
+        int increments = 0;
+        for(int i=0; i<count.length; i++) {
+            if(count[i]>1) {
+                count[i+1] = count[i+1] + (count[i]-1);
+                increments = increments + (count[i]-1);
+            }
+        }
+        return increments;
+    }
