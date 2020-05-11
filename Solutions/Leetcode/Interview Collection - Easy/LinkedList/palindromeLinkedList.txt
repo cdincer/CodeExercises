@@ -1,0 +1,94 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+ /* My own solution beats %95.3 of submissions*/
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        int counter =0;
+        while(dummy != null)
+        {
+         counter++;
+          dummy = dummy.next;
+        }
+        int[] array = new int[counter-1];
+        dummy = new ListNode();
+        dummy = head;
+        int i=0;
+       while(dummy != null)
+        {
+         array[i] = dummy.val;
+         dummy = dummy.next;
+           i++;
+         }
+
+        for(int x=0;x<array.length/2;x++)
+            if(array[x] != array[array.length-x-1])
+               return false;
+
+
+
+          return true;
+    }
+}
+/////////////////////////////////////
+/* Faster than my solution*/
+
+sample 0 ms submission
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ListNode slowPrev = null;
+        ListNode slow = head;
+        ListNode slowNext = null;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+
+            slowNext = slow.next;
+            slow.next = slowPrev;
+            slowPrev = slow;
+            slow = slowNext;
+        }
+
+        ListNode firstHalf = slowPrev;
+        ListNode secondHalf = null;
+        if(fast == null){
+            secondHalf = slow;
+        }
+        else{
+            secondHalf = slow.next;
+        }
+
+        while(firstHalf != null && secondHalf != null){
+            if(firstHalf.val != secondHalf.val){
+                return false;
+            }
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
+        }
+
+        return true;
+    }
+}
+
+
