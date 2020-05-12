@@ -1,0 +1,51 @@
+/*
+Test cases from the question:[5,1,4,null,null,3,6]
+                             []
+                             [2,1,3]
+                             [10,5,15,null,null,6,20]
+*/
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+ boolean result =       helper(root,null,null);
+   return result;
+    }
+
+
+    public boolean helper(TreeNode root,Integer lower,Integer upper)
+    {
+        if(root == null)
+           return true;
+
+        int val = root.val;
+        //valid value comes in lower,in upper bit but recursively
+        if(lower !=null && val<=lower) return false;
+        if(upper !=null && val>=upper) return false;
+
+        //root right is compared with lower,in actiom.
+        if(! helper(root.right,val,upper)) return false;
+         //root left is compared with upper,in actiom.
+        if(! helper(root.left,lower,val)) return false;
+
+
+        return true;
+
+    }
+}}
