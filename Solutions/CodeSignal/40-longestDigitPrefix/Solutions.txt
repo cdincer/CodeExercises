@@ -8,3 +8,13 @@ String myRegex = "^\\d+";
 		return "";
 
 }
+
+
+
+/*
+Double backlash is used to define a single.
+^ defines that  the pattern must start at beginning
+of a new line.
+\d stands for Any digit, short for [0-9]
++ stands for occurs one or more times.Find one or several
+*/
