@@ -1,0 +1,61 @@
+long concatenationsSum(int[] a) {
+long sum=0;
+String LongerItem;
+LongerItem="";
+
+    for(int i=0;i<a.length;i++)
+        for(int y=0;y<a.length;y++)
+        {
+                LongerItem = String.valueOf(a[i]) + String.valueOf(a[y]);
+                sum+=Long.parseLong(LongerItem);
+        }
+
+
+return sum;
+}
+
+
+
+/* Still too slow
+
+long concatenationsSum(int[] a) {
+long sum=0;
+String LongerItem;
+LongerItem="";
+String[] Items= new String[a.length];
+
+
+for(int i=0;i<a.length;i++)
+{
+    Items[i] = String.valueOf(a[i]);
+}
+
+    for(int i=0;i<a.length;i++)
+        for(int y=0;y<a.length;y++)
+        {
+                LongerItem = Items[i] +Items[y];
+                sum+=Long.parseLong(LongerItem);
+        }
+
+
+return sum;
+}
+*/
+
+
+/*
+
+
+a: [1, 10, 100, 1000, 10000, 100000, 1000000]
+
+
+Result:12345684320987
+
+a: [987153, 239178, 389649, 469261, 130806]
+
+
+Result:11080246080235
+
+*/
+
+

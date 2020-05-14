@@ -1,0 +1,74 @@
+boolean alternatingSort(int[] a) {
+int bzero=0;
+int bplus=1;
+int breaker=0;
+int[] b = new int[a.length];
+
+for(int i=0;i<a.length;i++)
+{
+    if(breaker==0)
+    {
+        b[i] = a[bzero];
+        bzero++;
+        breaker=1;
+    }else if(breaker==1)
+    {
+        breaker=0;
+        //System.out.print(a[a.length-bplus]);
+        b[i] = a[a.length-bplus];
+        bplus++;
+    }
+}
+
+
+
+
+Arrays.sort(a);
+
+for(int i=0;i<a.length-1;i++)
+{
+    int temp1=a[i];
+    int temp2 = b[i];
+if(temp1 != temp2)
+return false;
+
+    temp1=b[i];
+    temp2 = b[i+1];
+
+    if(temp1 >= temp2)
+return false;
+}
+
+
+
+
+
+
+return true;
+}
+
+/*
+b 0 is a 0
+b 1 is a.length -1
+b 2 is a 1
+b3 is a.length -2
+*/
+
+
+/*
+System.out.println("a array");
+for(int i=0;i<a.length;i++)
+{
+    System.out.print(a[i]);
+}
+
+
+System.out.println("b array");
+for(int i=0;i<a.length;i++)
+{
+    System.out.print(b[i]);
+}
+*/
+
+
+
