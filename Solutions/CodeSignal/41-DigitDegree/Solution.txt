@@ -1,0 +1,25 @@
+ public static int digitDegree(int n) {
+        Integer sum=0;
+        Integer counter=0;
+        char[] Items = String.valueOf(n).toCharArray();
+
+        if(Items.length==1)
+        {
+            return 0;
+        }
+
+        while (Items.length>1)
+        {
+            sum=0;
+            counter++;
+            for(int i=0;i<Items.length;i++)
+            {
+                sum+= Integer.parseInt(String.valueOf(Items[i]));
+            }
+            Items = String.valueOf(sum).toCharArray();
+
+        }
+
+        return counter;
+
+    }

@@ -18,54 +18,38 @@ public class Main {
         //     String aaa = Arrays.toString(inputArray3);
         String aaa = "mississippi";
         String bbb = "pa";
-        int ccc= minIncrementForUnique3(inputArray2);
+        int ccc= digitDegree(99);
         System.out.println(ccc);
     }
 
 
 
+    public static int digitDegree(int n) {
+        Integer sum=0;
+        Integer counter=0;
+        char[] Items = String.valueOf(n).toCharArray();
 
-
-
-
-
-
-
-    public static int minIncrementForUnique3(int[] a) {
-        int[] freq = new int[70000];
-        int moves = 0;
-
-        for (int num : a)
-            freq[num]++;
-
-        for (int i = 0; i < freq.length; i++) {
-            if (freq[i] <= 1)
-                continue;
-            int diff = freq[i] - 1;
-            moves += diff;
-            freq[i + 1] += diff;
+        if(Items.length==1)
+        {
+            return 0;
         }
 
-        return moves;
-    }
-
-
-
-    public int minIncrementForUnique4(int[] A) {
-        int N = A.length;
-        int[] count = new int[N*2];
-        for(int i=0; i<N; i++) {
-            count[A[i]]++;
-        }
-        int increments = 0;
-        for(int i=0; i<count.length; i++) {
-            if(count[i]>1) {
-                count[i+1] = count[i+1] + (count[i]-1);
-                increments = increments + (count[i]-1);
+        while (Items.length>1)
+        {
+            sum=0;
+            counter++;
+            for(int i=0;i<Items.length;i++)
+            {
+                sum+= Integer.parseInt(String.valueOf(Items[i]));
             }
+            Items = String.valueOf(sum).toCharArray();
+
         }
-        return increments;
+
+        return counter;
+
     }
+
 }
 
 

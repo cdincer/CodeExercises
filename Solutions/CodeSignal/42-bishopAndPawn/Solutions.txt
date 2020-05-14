@@ -1,0 +1,11 @@
+/*
+compare whether or not the absolute distance travelled on the x axis is the same as the absolute distance travelled on the y axis.
+*/
+
+
+boolean bishopAndPawn(String bishop, String pawn) {
+    return(Math.abs(bishop.charAt(0) - pawn.charAt(0))) == (Math.abs(bishop.charAt(1) - pawn.charAt(1)));
+
+
+
+}
