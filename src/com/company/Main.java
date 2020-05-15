@@ -16,39 +16,31 @@ public class Main {
 
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
-        String aaa = "mississippi";
+        String aaa = "abcabc";
         String bbb = "pa";
-        int ccc= digitDegree(99);
-        System.out.println(ccc);
+         aaa= buildPalindrome(aaa);
+        System.out.println(aaa);
     }
 
 
 
-    public static int digitDegree(int n) {
-        Integer sum=0;
-        Integer counter=0;
-        char[] Items = String.valueOf(n).toCharArray();
+    public static String buildPalindrome(String str) {
+        int i = 0;
+        while (!isPalindrome(str.substring(i))) i++;
 
-        if(Items.length==1)
-        {
-            return 0;
-        }
+        while (--i >= 0) str += str.charAt(i);
 
-        while (Items.length>1)
-        {
-            sum=0;
-            counter++;
-            for(int i=0;i<Items.length;i++)
-            {
-                sum+= Integer.parseInt(String.valueOf(Items[i]));
-            }
-            Items = String.valueOf(sum).toCharArray();
-
-        }
-
-        return counter;
-
+        return str;
     }
+
+    public static  boolean isPalindrome(String s) {
+        if (s.length() < 2) return true;
+
+        if (s.charAt(0) != s.charAt(s.length()-1)) return false;
+
+        return isPalindrome(s.substring(1, s.length() - 1));
+    }
+
 
 }
 

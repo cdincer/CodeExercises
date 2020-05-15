@@ -1,0 +1,20 @@
+String findEmailDomain(String address) {
+String[] Parted = address.split("@",0);
+String sanitization ="";
+
+
+//System.out.println(Parted[1]);
+sanitization =Parted[Parted.length-1];
+
+
+
+return sanitization;
+}
+
+alternatives:
+
+
+String findEmailDomain(String address) {
+    return address.substring(address.lastIndexOf("@") + 1);
+}
+
