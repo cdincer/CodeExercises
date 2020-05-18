@@ -1,0 +1,17 @@
+//Instead of finding the max profit  like the previous question
+//We do a single transaction.
+//O(n2) to go through all of the possible combinations to find the maximum profit.
+//Just a linear loop and a delayed start to find the highest profit
+public class Solution {
+    public int maxProfit(int prices[]) {
+        int maxprofit = 0;
+        for (int i = 0; i < prices.length - 1; i++) {
+            for (int j = i + 1; j < prices.length; j++) {
+                int profit = prices[j] - prices[i];
+                if (profit > maxprofit)
+                    maxprofit = profit;
+            }
+        }
+        return maxprofit;
+    }
+}
