@@ -16,31 +16,54 @@ public class Main {
 
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
-        String aaa = "abcabc";
+        String aaa = "{[]}";
         String bbb = "pa";
-         aaa= buildPalindrome(aaa);
+         boolean baa= isValid(aaa);
         System.out.println(aaa);
     }
 
 
 
-    public static String buildPalindrome(String str) {
-        int i = 0;
-        while (!isPalindrome(str.substring(i))) i++;
 
-        while (--i >= 0) str += str.charAt(i);
 
-        return str;
+    // Hash table that takes care of the mappings.
+
+
+    public static  boolean isValid(String s) {
+         HashMap<Character, Character> mappings;
+
+        // Initialize hash map with mappings. This simply makes the code easier to read.
+
+        mappings = new HashMap<Character, Character>();
+        mappings.put(')', '(');
+        mappings.put('}', '{');
+        mappings.put(']', '[');
+
+        // Initialize a stack to be used in the algorithm.
+        Stack<Character> stack = new Stack<Character>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            // If the current character is a closing bracket.
+            if (mappings.containsKey(c)) {
+
+                // Get the top element of the stack. If the stack is empty, set a dummy value of '#'
+                char topElement = stack.empty() ? '#' : stack.pop();
+                char MapR = mappings.get(c);
+                // If the mapping for this bracket doesn't match the stack's top element, return false.
+                if (topElement != mappings.get(c)) {
+                    return false;
+                }
+            } else {
+                // If it was an opening bracket, push to the stack.
+                stack.push(c);
+            }
+        }
+
+        // If the stack still contains elements, then it is an invalid expression.
+        return stack.isEmpty();
     }
-
-    public static  boolean isPalindrome(String s) {
-        if (s.length() < 2) return true;
-
-        if (s.charAt(0) != s.charAt(s.length()-1)) return false;
-
-        return isPalindrome(s.substring(1, s.length() - 1));
-    }
-
 
 }
 
