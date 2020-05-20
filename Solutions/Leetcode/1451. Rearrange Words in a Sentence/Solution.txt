@@ -1,0 +1,40 @@
+//Really slow at %5,great at memory.
+
+class Solution {
+    public String arrangeWords(String text) {
+
+        String[] TArr = text.split(" ");
+        int Element1=0;
+        int Element2=0;
+        for(int i=0;i<TArr.length-1;i++)
+            for(int j=0;j<TArr.length-1;j++)
+            {
+                Element1=TArr[j].toString().length();
+                Element2=TArr[j+1].toString().length();
+
+                if(Element1> Element2)
+                {
+                    String Temp =  TArr[j+1].toString();
+                    TArr[j+1] =TArr[j];
+                    TArr[j]=Temp;
+                }
+            }
+
+
+                    String newString = Arrays.toString(TArr);
+         //Clean out the noise from input
+        newString = newString.replace(",","");
+        newString = newString.replace("[","");
+        newString = newString.replace("]","");
+        int X=0;
+        char itemr= Character.toUpperCase(newString.charAt(X));
+        newString = newString.toLowerCase();
+       newString = Character.toUpperCase(newString.charAt(X)) + newString.substring(1,newString.length());
+
+        return newString;
+    }
+}
+
+
+
+//Open a array for 100k elements.
