@@ -19,7 +19,7 @@ public class Main {
         String aaa = "1010";
         String bbb = "1011";
        //  bbb= convertToTitle(29);
-        bbb= convertToTitle2(700);
+        bbb= convertToTitle2(53);
         System.out.println(bbb);
     }
     public static  String convertToTitle2(int n) {
@@ -32,54 +32,7 @@ public class Main {
         result.reverse();
         return result.toString();
     }
-    public static String convertToTitle(int n) {
-        StringBuilder StringR = new StringBuilder();
 
-        char Column1 = 'A';
-        char Column2 = 'A';
-        int switchItem=0;
-        int x=0;
-        //Dividing by 26 doesn't help
-
-        for(int i=0;i<n;i++)
-        {
-            if(i==52)
-                System.out.println("bug");
-
-            if(x<=26 && switchItem==0)
-            {
-                Column1++;
-            }
-            else
-            if(x<=26 && switchItem==1)
-            {
-                Column2++;
-            }
-
-            if(x==27 && switchItem==0)
-            {
-                Column1='A';
-                switchItem=1;
-                x=0;
-            }else
-            if(x==27 && switchItem==1)
-            {
-                Column2='A';
-                switchItem=0;
-                x=0;
-            }
-        x++;
-        }
-
-        StringR.append(Column1);
-
-        if(n>26)
-            StringR.append(Column2);
-
-
-
-        return StringR.toString();
-    }
 
 
 
