@@ -18,28 +18,73 @@ public class Main {
         //     String aaa = Arrays.toString(inputArray3);
         String aaa = "1010";
         String bbb = "1011";
-         bbb= addBinary(aaa,bbb);
-        System.out.println(aaa);
+       //  bbb= convertToTitle(29);
+        bbb= convertToTitle2(700);
+        System.out.println(bbb);
     }
-
-
-
-
-
-
-    public static String addBinary(String a, String b) {
-        StringBuilder sb = new StringBuilder(); //Google immutability or string vs stringbuilder if you don't know why we use this instead of regular string
-        int i = a.length() - 1, j = b.length() -1, carry = 0; //two pointers starting from the back, just think of adding two regular ints from you add from back
-        while (i >= 0 || j >= 0) {
-            int sum = carry; //if there is a carry from the last addition, add it to carry
-            if (j >= 0) sum += b.charAt(j--) - '0'; //we subtract '0' to get the int value of the char from the ascii
-            if (i >= 0) sum += a.charAt(i--) - '0';
-            sb.append(sum % 2); //if sum==2 or sum==0 append 0 cause 1+1=0 in this case as this is base 2 (just like 1+9 is 0 if adding ints in columns)
-            carry = sum / 2; //if sum==2 we have a carry, else no carry 1/2 rounds down to 0 in integer arithematic
+    public static  String convertToTitle2(int n) {
+        StringBuilder result = new StringBuilder();
+        while (n > 0) {
+            n--;
+            result.append((char)('A' + n % 26));
+            n /= 26;
         }
-        if (carry != 0) sb.append(carry); //leftover carry, add it
-        return sb.reverse().toString();
+        result.reverse();
+        return result.toString();
     }
+    public static String convertToTitle(int n) {
+        StringBuilder StringR = new StringBuilder();
+
+        char Column1 = 'A';
+        char Column2 = 'A';
+        int switchItem=0;
+        int x=0;
+        //Dividing by 26 doesn't help
+
+        for(int i=0;i<n;i++)
+        {
+            if(i==52)
+                System.out.println("bug");
+
+            if(x<=26 && switchItem==0)
+            {
+                Column1++;
+            }
+            else
+            if(x<=26 && switchItem==1)
+            {
+                Column2++;
+            }
+
+            if(x==27 && switchItem==0)
+            {
+                Column1='A';
+                switchItem=1;
+                x=0;
+            }else
+            if(x==27 && switchItem==1)
+            {
+                Column2='A';
+                switchItem=0;
+                x=0;
+            }
+        x++;
+        }
+
+        StringR.append(Column1);
+
+        if(n>26)
+            StringR.append(Column2);
+
+
+
+        return StringR.toString();
+    }
+
+
+
+
+
 
 }
 
