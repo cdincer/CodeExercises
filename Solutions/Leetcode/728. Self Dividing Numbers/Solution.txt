@@ -1,0 +1,39 @@
+/*Custom
+Runtime: 7 ms, faster than 12.08% of Java online submissions for Self Dividing Numbers.
+Memory Usage: 39.5 MB, less than 6.67% of Java online submissions for Self Dividing Numbers.
+*/
+class Solution {
+    public List<Integer> selfDividingNumbers(int left, int right) {
+        int n=right;
+        List<Integer> Returned = new ArrayList<Integer>();
+        int circ=0;
+        while(n>=left)
+        {
+            circ=0;
+            char[] Items=String.valueOf(n).toCharArray();
+
+            for(int a=0;a<Items.length;a++)
+            {
+                  if(Character.getNumericValue(Items[a]) ==0)
+                  circ=1;
+
+                if(Character.getNumericValue(Items[a]) !=0)
+                if(n % Character.getNumericValue(Items[a]) !=0)
+                {
+                    circ=1;
+                }
+            }
+
+            if(circ==0)
+            Returned.add(n);
+
+
+            n--;
+        }
+
+
+
+        Collections.sort(Returned);
+        return Returned;
+    }
+}
