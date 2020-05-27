@@ -21,6 +21,9 @@ Roman numerals are usually written largest to smallest from left to right. Howev
 Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
 */
 
+//if a current character value is greater than that of the previous, we have to subtract it.
+//We subtract twice, because previously iteration had blindly added it
+
 
 class Solution {
     public int romanToInt(String s) {
@@ -45,7 +48,5 @@ class Solution {
 }
 }
 
-//if a current character value is greater than that of the previous, we have to subtract it.
-//We subtract twice, because previously iteration had blindly added it
 
 
