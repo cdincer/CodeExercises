@@ -34,7 +34,3 @@ class Solution {
         return newString;
     }
 }
-
-
-
-//Open a array for 100k elements.
