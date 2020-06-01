@@ -1,0 +1,16 @@
+
+//Doesn't need regex read the rules properly
+
+boolean isMAC48Address(String inputString) {
+String[] str = inputString.split("-");
+if(str.length != 6 || inputString.length()!=17 ) return false;
+
+for(int i = 0; i<str.length; i++){
+if(str[i].length() >2) return false;
+if(!Character.isDigit(str[i].charAt(0))&&(str[i].charAt(0) < 'A' || str[i].charAt(0) >'F'))
+return false;
+if(!Character.isDigit(str[i].charAt(1))&&(str[i].charAt(1) < 'A' || str[i].charAt(1) >'F'))
+return false;
+}
+return true;
+}

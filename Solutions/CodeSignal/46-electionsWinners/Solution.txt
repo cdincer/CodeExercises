@@ -1,0 +1,19 @@
+   //Broken test cases,(contrary to question description)tons of deleted comments on the question. Probably broken question.
+
+
+   int electionsWinners(int[] votes, int k) {
+        Arrays.sort(votes);
+
+        int maxVote = votes[votes.length - 1];
+        int candidates = 0;
+
+        for(int candidate : votes){
+            if(candidate + k > maxVote)
+                candidates++;
+        }
+
+        if(votes[votes.length - 2] != maxVote && candidates == 0)
+            candidates++;
+
+        return candidates;
+    }
