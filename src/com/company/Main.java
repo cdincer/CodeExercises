@@ -19,11 +19,42 @@ public class Main {
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
         String aaa = "1010";
-        String bbb = "1011";
+        String bbb = "aabbbc";
        //  bbb= convertToTitle(29);
+        aaa = lineEncoding(bbb);
         System.out.println(bbb);
     }
 
+    public static String lineEncoding(String s) {
+        int repetition=1;
+        int[] Items = new int[26];
+        StringBuilder returnI = new StringBuilder();
+
+        for(int i=1;i<s.length()-1;i++ )
+        {
+            if(s.charAt(i)==s.charAt(i+1))
+            {
+                repetition++;
+            }else
+            {
+                if(repetition >1)
+                    returnI.append(repetition);
+
+                returnI.append(s.charAt(i));
+                repetition=1;
+            }
+        }
+
+
+        if(repetition >1)
+            returnI.append(repetition);
+
+        returnI.append(s.charAt(s.length()-1));
+
+
+
+        return returnI.toString();
+    }
 }
 
 

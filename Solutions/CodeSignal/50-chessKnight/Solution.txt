@@ -1,0 +1,25 @@
+//Using characters for limiters instead of integers is the key.
+//It reduces complications.
+
+int chessKnight(String cell) {
+int letli='h'-'a';
+int numli=8;
+
+int movLet = cell.charAt(0)-'a';
+int movNum = cell.charAt(1)-'0';
+
+int counter=0;
+int[] pos_x = {1,2,2,1,-1,-2,-2,-1};
+int[] pos_y = {2,1,-1,-2,-2,-1,1,2};
+
+
+for(int i=0;i<8;i++)
+{
+ if('h'>=cell.charAt(0)+pos_x[i] && cell.charAt(0)+pos_x[i]>='a' 
+ && '8'>=pos_y[i]+cell.charAt(1) && pos_y[i]+cell.charAt(1)>='1')
+ counter++;
+}
+
+
+return counter;
+}
