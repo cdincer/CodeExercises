@@ -1,0 +1,47 @@
+//Mine
+int sumUpNumbers(String inputString) {
+    char[] Items = inputString.toCharArray();
+    int result=0;
+    StringBuilder inner = new StringBuilder();
+
+//Clean out any kind of debris.
+for(int i=0;i<Items.length;i++)
+{
+     if(Character.isDigit(Items[i]))
+    {
+        inner.append(Items[i]);
+    }  else
+    {
+        inner.append(' ');
+    }
+}
+
+//Replace unnecessary spaces with a single one. So we can have
+// a healthy array.
+String mid = inner.toString();
+mid = mid.replaceAll(" +", " ");
+
+String[] ItemsS = mid.split(" ");
+
+if(ItemsS.length==0)
+return 0;
+
+for(int y=0;y<ItemsS.length;y++)
+{
+    if(ItemsS[y].length()>=1)
+    result+=Integer.parseInt(ItemsS[y]);
+}
+
+
+return result;
+}
+
+//Non-streams alternative
+int sumUpNumbers(String inputString) {
+    Matcher m = Pattern.compile("\\d+").matcher(inputString);
+    int sum = 0;
+    while( m.find() ){
+        sum += Integer.parseInt(m.group(0));
+    }
+    return sum;
+}

@@ -18,28 +18,45 @@ public class Main {
 
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
-        String aaa ="2 apples, 12 oranges";
+        String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
        //  bbb= convertToTitle(29);
         int  ccc = sumUpNumbers(aaa);
         System.out.println(bbb);
     }
   public static   int sumUpNumbers(String inputString) {
-        char[] Items = inputString.toCharArray();
-        int result=0;
-        int currint=0;
+      char[] Items = inputString.toCharArray();
+      int result=0;
+      StringBuilder inner = new StringBuilder();
 
-        for(char currL : Items)
-        {
-            if(Character.isDigit(currL))
-            {
-                currint = Integer.parseInt(String.valueOf(currL));
-                result+=currint;
-            }
-        }
 
-        return result;
-    }
+//Clean out any kind of debris.
+      for(int i=0;i<Items.length;i++)
+      {
+          if(Character.isDigit(Items[i]))
+          {
+              inner.append(Items[i]);
+          }  else
+          {
+              inner.append(' ');
+          }
+      }
+
+//Replace unnecessary spaces with a single one. So we can have
+// a healthy array.
+      String mid = inner.toString();
+      mid = mid.replaceAll(" +", " ");
+
+      System.out.println(mid);
+      String[] ItemsS = mid.split(" ");
+
+
+
+//System.out.println(inner.toString());
+
+      return result;
+  }
+
 
 
 }
