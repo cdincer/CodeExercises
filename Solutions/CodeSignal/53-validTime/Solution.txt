@@ -1,0 +1,34 @@
+
+///Custom solution
+boolean validTime(String time) {
+if(time.length()>5)
+return false;
+
+//Assign 4 digits some place
+String Dig1 = String.valueOf(time.charAt(0));
+String Dig2 = String.valueOf(time.charAt(1));
+String Dig3 = String.valueOf(time.charAt(3));
+String Dig4 = String.valueOf(time.charAt(4));
+
+int FirstHalf = Integer.parseInt(Dig1+Dig2);
+int SecondHalf = Integer.parseInt(Dig3+Dig4);
+
+System.out.println(FirstHalf);
+System.out.println(SecondHalf);
+
+if( FirstHalf>23|| SecondHalf>59)
+return false;
+
+return true;
+}
+
+//Without regex small alternative
+boolean validTime(String time) {
+    int hours= Integer.parseInt(time.substring(0, 2));
+    int mins= Integer.parseInt(time.substring(3));
+    if (hours>= 24 || mins>= 60) return false;
+    return true;
+}
+
+
+

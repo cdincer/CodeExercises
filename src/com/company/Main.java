@@ -18,43 +18,30 @@ public class Main {
 
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
-        String aaa = "1010";
-        String bbb = "aabbbc";
+        String aaa ="2 apples, 12 oranges";
+        String bbb = "ab-CDE-fg_hi";
        //  bbb= convertToTitle(29);
-        aaa = lineEncoding(bbb);
+        int  ccc = sumUpNumbers(aaa);
         System.out.println(bbb);
     }
+  public static   int sumUpNumbers(String inputString) {
+        char[] Items = inputString.toCharArray();
+        int result=0;
+        int currint=0;
 
-    public static String lineEncoding(String s) {
-        int repetition=1;
-        int[] Items = new int[26];
-        StringBuilder returnI = new StringBuilder();
-
-        for(int i=1;i<s.length()-1;i++ )
+        for(char currL : Items)
         {
-            if(s.charAt(i)==s.charAt(i+1))
+            if(Character.isDigit(currL))
             {
-                repetition++;
-            }else
-            {
-                if(repetition >1)
-                    returnI.append(repetition);
-
-                returnI.append(s.charAt(i));
-                repetition=1;
+                currint = Integer.parseInt(String.valueOf(currL));
+                result+=currint;
             }
         }
 
-
-        if(repetition >1)
-            returnI.append(repetition);
-
-        returnI.append(s.charAt(s.length()-1));
-
-
-
-        return returnI.toString();
+        return result;
     }
+
+
 }
 
 

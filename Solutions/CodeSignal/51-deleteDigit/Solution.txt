@@ -1,0 +1,28 @@
+int deleteDigit(int n) {
+
+int result =0;
+String nstring= String.valueOf(n);
+int nlen=nstring.length();
+StringBuilder intt1= new StringBuilder();
+int current=0;
+
+for(int i=0;i<nlen;i++)
+{
+    intt1.append(nstring);
+    intt1.replace(i, i+1, "");
+    System.out.println("Removed one "+i+" "+intt1.toString());
+   current= Integer.parseInt(intt1.toString());
+
+
+   if(current>result)
+   {
+
+    result=current;
+    }
+
+    intt1.delete(0, intt1.length());
+}
+
+
+return result;
+}
