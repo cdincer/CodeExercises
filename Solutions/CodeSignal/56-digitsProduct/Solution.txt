@@ -1,0 +1,22 @@
+int digitsProduct(int product) {
+    List<Integer> digits = new ArrayList();
+    int answer = 0;
+
+    if(product == 0) return 10;
+    if (product == 1) return 1;
+
+    for(int d=9; d > 1; d--)
+        while(product % d == 0) {
+            product /= d;
+            digits.add(d);
+        }
+
+    if (product > 1) return -1;
+
+//Because its the smallest digits we put them in by multiplying each with 10.
+    Collections.sort(digits);
+    for(Integer d : digits)
+        answer = 10 * answer + d;
+
+    return answer;
+}
