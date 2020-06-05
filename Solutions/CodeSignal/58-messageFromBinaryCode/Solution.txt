@@ -1,0 +1,35 @@
+//Custom solution
+String messageFromBinaryCode(String code) {
+ StringBuilder Items= new StringBuilder();
+ StringBuilder main1= new StringBuilder();
+    int y=1;
+    for(int i=0;i<code.length();i++)
+    {
+        if(y%8==0)
+        {
+        Items.append(String.valueOf(code.charAt(i)));
+        int current= Integer.parseInt(Items.toString().trim(), 2);
+        char ch= (char) current;
+        main1.append(ch);
+        Items.replace(0, Items.length(), " ");
+         y=1;
+        }else
+        {
+        Items.append(String.valueOf(code.charAt(i)));
+        y++;
+        }
+        }
+        return main1.toString();
+    }
+
+
+//Beautiful looking alternative
+String messageFromBinaryCode(String code) {
+    String s = "";
+    for(int i = 0; i<code.length(); i+=8) {
+
+
+    s += (char) Integer.parseInt(code.substring(i, i+8), 2);
+    }
+    return s;
+}
