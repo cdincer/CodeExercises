@@ -21,41 +21,39 @@ public class Main {
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
        //  bbb= convertToTitle(29);
-        int  ccc = sumUpNumbers(aaa);
+        int[][]  ccc = spiralNumbers(6);
         System.out.println(bbb);
     }
-  public static   int sumUpNumbers(String inputString) {
-      char[] Items = inputString.toCharArray();
-      int result=0;
-      StringBuilder inner = new StringBuilder();
+  public static int[][] spiralNumbers(int n) {
+      int[][] array = new int[n][n];
 
+      int left = 0;
+      int right = n - 1;
+      int top = 0;
+      int down = n - 1;
 
-//Clean out any kind of debris.
-      for(int i=0;i<Items.length;i++)
-      {
-          if(Character.isDigit(Items[i]))
-          {
-              inner.append(Items[i]);
-          }  else
-          {
-              inner.append(' ');
-          }
-      }
+   for(int counter=1;counter<n*n;)
+   {
+       for(int x=left;x<=right;x++)
+           array[top][x]=counter++;
+       top++;
 
-//Replace unnecessary spaces with a single one. So we can have
-// a healthy array.
-      String mid = inner.toString();
-      mid = mid.replaceAll(" +", " ");
+       for(int y=top;y<=down;y++)
+           array[y][right] = counter++;
+       right--;
 
-      System.out.println(mid);
-      String[] ItemsS = mid.split(" ");
+       for(int x=right;x>=left;x--)
+           array[down][x]=counter++;
+       down--;
 
-
-
-//System.out.println(inner.toString());
-
-      return result;
+       for(int y=down;y>=top;y--)
+           array[y][left]=counter++;
+       left++;
+   }
+      return array;
   }
+
+
 
 
 
