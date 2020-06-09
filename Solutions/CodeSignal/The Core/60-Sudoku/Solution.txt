@@ -1,0 +1,20 @@
+boolean sudoku(int[][] grid) {
+    for (int i=0; i<3; i++) {
+        for (int j=0; j<3; j++) {
+            int[][] counts = new int[3][9];
+            for (int x=0; x<3; x++) {
+                for (int y=0; y<3; y++) {
+                    counts[0][grid[i*3+x][j*3+y]-1] = 1;
+                    counts[1][grid[i*3+j][x*3+y]-1] = 1;
+                    counts[2][grid[x*3+y][i*3+j]-1] = 1;
+                }
+            }
+            for (int k=0; k<9; k++) {
+                if (counts[0][k] == 0 || counts[1][k] == 0 || counts[2][k] == 0) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
