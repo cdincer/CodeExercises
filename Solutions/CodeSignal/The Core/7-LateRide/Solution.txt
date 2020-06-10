@@ -1,0 +1,30 @@
+//Mine
+int lateRide(int n) {
+
+int hours=0;
+int minutes=0;
+int result=0;
+hours = n /60;
+minutes= n%60;
+
+char[] hourA=   String.valueOf(hours).toCharArray();
+char[] minutesA=   String.valueOf(minutes).toCharArray();
+
+for(int i=0;i<hourA.length;i++)
+{
+    result+= Character.getNumericValue(hourA[i]);
+}
+
+for(int i=0;i<minutesA.length;i++)
+{
+    result+= Character.getNumericValue(minutesA[i]);
+}
+
+return result;
+}
+//Alternative and gorgeous one.
+int lateRide(int n) {
+    int hours = n/60;
+    int minutes = n%60;
+    return hours/10 + hours%10 + minutes/10 + minutes%10;
+}
