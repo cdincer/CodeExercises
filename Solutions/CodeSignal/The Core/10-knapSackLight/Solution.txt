@@ -1,0 +1,13 @@
+int knapsackLight(int value1, int weight1, int value2, int weight2, int maxW) {
+ int result=0;
+
+
+if(weight1+weight2<=maxW)
+result= value1+value2;
+else if( (maxW>=weight1 && value1>=value2) || (weight2>maxW && maxW>=weight1) )
+result= value1;
+else if( (maxW>=weight2 && value2>=value1) || (weight1>maxW && maxW>=weight2) )
+result= value2;
+
+return result;
+}
