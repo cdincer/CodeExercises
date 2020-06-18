@@ -1,0 +1,9 @@
+int mirrorBits(int a) {
+
+StringBuilder tbr = new StringBuilder(Integer.toBinaryString(a));
+String Item = tbr.reverse().toString();
+Integer test = Integer.parseInt(Item,2);
+
+return test;
+
+}

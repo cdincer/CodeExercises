@@ -1,0 +1,15 @@
+int countSumOfTwoRepresentations2(int n, int l, int r) {
+    //l ≤ A ≤ B ≤ r.
+    int t = 0;
+    //i=l
+    for (int i = l; i <= r; i++) {
+        if (n-i >= i && n-i <= r)
+            t++;
+    }
+    return t;
+}
+/*
+n: 93
+l: 24
+r: 58
+/*
