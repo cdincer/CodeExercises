@@ -21,29 +21,22 @@ public class Main {
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
        //  bbb= convertToTitle(29);
-        int  ccc = rangeBitCount(2,7);
+        int  ccc = additionWithoutCarrying(456,1734);
         System.out.println(bbb);
     }
-   public static  int rangeBitCount(int a, int b) {
-        int count=0;
+   public static  int additionWithoutCarrying(int param1, int param2) {
+       int t = 0;
+       int mult = 1;
+       while (param1 + param2 > 0) {
+           int value = (param1 +param2)%10;
+           t += value * mult;
+           mult *= 10;
+           param1 /= 10;
+           param2 /= 10;
+       }
+       return t;
+   }
 
-        if(b-a==1)
-        {
-            return 1;
-        }
-
-        for(int i=a;i<b;i++)
-        {
-            String Binary = Integer.toBinaryString(i);
-
-            for(int y=0;y<Binary.length();y++)
-                if(Binary.charAt(y)=='1')
-                    count++;
-        }
-
-
-        return count;
-    }
 
 
 
