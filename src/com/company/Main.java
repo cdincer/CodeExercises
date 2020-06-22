@@ -21,21 +21,23 @@ public class Main {
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
        //  bbb= convertToTitle(29);
-        int  ccc = additionWithoutCarrying(456,1734);
+        int  ccc = rounders(2444);
         System.out.println(bbb);
     }
-   public static  int additionWithoutCarrying(int param1, int param2) {
-       int t = 0;
-       int mult = 1;
-       while (param1 + param2 > 0) {
-           int value = (param1 +param2)%10;
-           t += value * mult;
-           mult *= 10;
-           param1 /= 10;
-           param2 /= 10;
+   public static int rounders(int value) {
+       int t = 1;
+       while (value >= 10) {
+           t *= 10;
+           int r = 0;
+           if (value % 10 >= 5)
+               r = 1;
+           value /= 10;
+           value += r;
+           System.out.println("aaa "+ value);
        }
-       return t;
+       return t * value;
    }
+
 
 
 

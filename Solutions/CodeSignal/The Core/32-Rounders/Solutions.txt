@@ -1,0 +1,13 @@
+int rounders(int value) {
+    int t = 1;
+    while (value >= 10) {
+        t *= 10;
+        int r = 0;
+        if (value % 10 >= 5)
+            r = 1;
+        value /= 10;
+        value += r;
+        System.out.println("aaa "+ value);
+    }
+    return t * value;
+}
