@@ -1,0 +1,23 @@
+int comfortableNumbers(int l, int r) {
+    int total_pairs = 0;
+    for(int i=l; i<=r; i++){
+        for(int j=i+1; j<=r; j++){
+            int s_a = digitSum(i);
+            int s_b = digitSum(j);
+            if (j>=(i-s_a) && j<=(i+s_a) && i>=(j-s_b) && i<=(j+s_b)) {
+                total_pairs++;
+            }
+        }
+    }
+    return total_pairs;
+}
+int digitSum(int n){
+    int sum = 0;
+
+    while(n>0){
+        sum += (n%10);
+        n = n/10;
+    }
+
+    return sum;
+}

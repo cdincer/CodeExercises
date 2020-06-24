@@ -1,0 +1,18 @@
+int pagesNumberingWithInk(int current, int numberOfDigits) {
+
+while(numberOfDigits>0)
+{
+    char[] lon = String.valueOf(current).toCharArray();
+    if(numberOfDigits - lon.length >=0)
+    {
+        numberOfDigits-=lon.length;
+    }
+    else
+    {
+    break;
+    }
+        current++;
+}
+
+return current-1;
+}

@@ -1,0 +1,28 @@
+int squareDigitsSequence(int a0) {
+int counter=0;
+int circb=0;
+int breaker = a0;
+ArrayList<Integer> ledger = new ArrayList<Integer>();
+while(circb != a0)
+{
+    circb=0;
+    char[] bkd = String.valueOf(breaker).toCharArray();
+    for(char item : bkd)
+    {
+        int casted =  Integer.parseInt(String.valueOf(item));
+        circb += casted * casted;
+    }
+    breaker=circb;
+    counter++;
+    if(!ledger.contains(breaker))
+    {
+        ledger.add(breaker);
+    }
+     else
+     {
+        counter++;
+        return counter;
+     }
+}
+return counter+1;
+}
