@@ -21,55 +21,42 @@ public class Main {
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
        //  bbb= convertToTitle(29);
-          inputArray3 = replaceMiddle(inputArray2);
+          int a = comfortableNumbers(1,9);
 
 
           for(int i=0;i<inputArray3.length;i++)
         System.out.println(inputArray3[i]);
     }
-       public static int[] replaceMiddle(int[] arr) {
-           int[] c = new int[arr.length-1];
-           if(arr.length % 2 ==1)
-               return arr;
-
-           int j=0;
-           int middle = arr[arr.length/2] + arr[arr.length-arr.length/2-1];
-
-    System.out.println("aaaa " + c.length/2);
-
-           for(int i=0;i<arr.length;i++)
-           {
 
 
-               if( i != arr.length/2 || i != arr.length-arr.length/2  )
-               {
-                   c[j]=arr[i];
-                   j++;
+   public static int comfortableNumbers(int l, int r) {
+       int total_pairs = 0;
+       for(int i=l; i<=r; i++){
+           for(int j=i+1; j<=r; j++){
+               int s_a = digitSum(i);
+               int s_b = digitSum(j);
+               if (j>=(i-s_a) && j<=(i+s_a) && i>=(j-s_b) && i<=(j+s_b)) {
+                   total_pairs++;
                }
            }
-           c[c.length/2]=middle;
-
-           return c;
        }
+       return total_pairs;
+   }
+    public static int digitSum(int n){
+        int sum = 0;
 
-
-
-    int[] replaceMiddle2(int[] arr) {
-        int size = arr.length;
-        if(size%2!=0) {
-            return arr;
+        while(n>0){
+            sum += (n%10);
+            n = n/10;
         }
-        int[] res = new int[size-1];
-        int i =0;
-        for(int j=0; j<size; j++) {
-            if(j==size/2-1) {
-                res[i++] = arr[j] + arr[j+1];
-            } else if(j != size/2) {
-                res[i++] = arr[j];
-            }
-        }
-        return res;
+
+        return sum;
     }
+
+
+
+//How do we get to the root number
+//one time division is not enough
 
 
 
