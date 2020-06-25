@@ -1,0 +1,64 @@
+int[] weakNumbers(int n) {
+    List<Integer> list = new ArrayList<>();
+    for (int i=1; i<=n; i++) {
+        list.add(d(i));
+    }
+    List<Integer> l = new ArrayList<>();
+    for (int i=1; i<=n; i++) {
+        l.add(weakness(list, i));
+    }
+    int m = Collections.max(l);
+    int c = 0;
+    for (int i=0; i<n; i++) {
+        if (l.get(i) == m)
+            c++;
+    }
+    return new int[] {m, c};
+}
+
+int d(int n) {
+    int c = 0;
+    for (int i=1; i<=n; i++) {
+        if (n % i == 0)
+            c++;
+    }
+    return c;
+}
+
+int weakness(List<Integer> list, int n) {
+    int w = 0;
+    for (int i=0; i<n-1; i++) {
+        if (list.get(i) > list.get(n-1))
+            w++;
+    }
+    return w;
+}
+
+
+--- my alternative
+int[] weakNumbers(int n) {
+
+int[] aritem= new int[n];
+ArrayList<Integer> Items = new ArrayList<Integer>();
+for(int i=1;i<n;i++)
+{
+    int t=2;
+    while(t<n)
+    {
+        if(i%t==0)
+        aritem[i]++;
+        t++;
+    }
+}
+
+Arrays.sort(aritem);
+int bigger = aritem[aritem.length-1];
+
+for(int i=0;i<aritem.length;i++)
+{
+    if(aritem[i]==bigger)
+      Items.add(bigger);
+}
+
+return new int[] {bigger,Items.size()};
+}

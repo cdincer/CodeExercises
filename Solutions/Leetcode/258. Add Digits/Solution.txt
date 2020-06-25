@@ -1,0 +1,20 @@
+class Solution {
+    public int addDigits(int num) {
+        int result=0;
+        int breaker =num;
+        while(breaker>9)
+        {
+            char[] item = String.valueOf(breaker).toCharArray();
+            for(int i=0;i<item.length;i++)
+            {
+                int casted = item[i] -'0';
+                result+=casted;
+            }
+            breaker=result;
+            result=0;
+        }
+
+
+        return breaker;
+    }
+}
