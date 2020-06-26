@@ -21,7 +21,7 @@ public class Main {
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
        //  bbb= convertToTitle(29);
-          int a = comfortableNumbers(1,9);
+        int[] inputArray4 = intersection(inputArray,inputArray2);
 
 
           for(int i=0;i<inputArray3.length;i++)
@@ -29,35 +29,42 @@ public class Main {
     }
 
 
-   public static int comfortableNumbers(int l, int r) {
-       int total_pairs = 0;
-       for(int i=l; i<=r; i++){
-           for(int j=i+1; j<=r; j++){
-               int s_a = digitSum(i);
-               int s_b = digitSum(j);
-               if (j>=(i-s_a) && j<=(i+s_a) && i>=(j-s_b) && i<=(j+s_b)) {
-                   total_pairs++;
-               }
-           }
-       }
-       return total_pairs;
-   }
-    public static int digitSum(int n){
-        int sum = 0;
+    public static    int[] intersection(int[] nums1, int[] nums2) {
+        HashSet<Integer> set1 = new HashSet<Integer>();
+        HashSet<Integer> set2 = new HashSet<Integer>();
 
-        while(n>0){
-            sum += (n%10);
-            n = n/10;
-        }
+        for(int number=0;number<nums1.length;number++)
+            set1.add(number);
 
-        return sum;
+        for(int number=0;number<nums2.length;number++)
+            set2.add(number);
+
+        if(set1.size()<set2.size())
+            return intersection_calc(set1,set2);
+
+        return intersection_calc(set2,set1);
     }
 
 
 
-//How do we get to the root number
-//one time division is not enough
 
+    public static int[] intersection_calc(HashSet<Integer> set1,HashSet<Integer> set2)
+    {
+        int[] return2 = new int[set1.size()];
+        int ind=0;
+
+        for(int number : set1)
+        {
+            if(set2.contains(number))
+            {
+                return2[ind]=number;
+                ind++;
+            }
+        }
+
+        return return2;
+
+    }
 
 
 
