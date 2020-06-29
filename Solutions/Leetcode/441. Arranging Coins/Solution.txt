@@ -1,0 +1,19 @@
+class Solution {
+    public int arrangeCoins(int n) {
+        int stairs=1;
+       int counter=0;
+        while(n>=0)
+        {
+            if(n>=stairs)
+            n-=stairs;
+            else
+                break;
+
+            stairs++;
+            counter++;
+        }
+        return counter;
+    }
+}
+//No debugging messages ! They kill the efficiency -- 7 ms - 15 ms range
+//Memory Usage: 36.5 MB, less than 88.50% of Java online submissions for Arranging Coins.

@@ -16,54 +16,33 @@ public class Main {
         String[] items= {"flower","flow","flight"};
         String[] items2= {"aa","aa"};
 
+        String s ="";
+
         //     int[] inputArray3 =  plusOne(inputArray2);
         //     String aaa = Arrays.toString(inputArray3);
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
+        int ccc = countSegments("Hello, my name is John");
        //  bbb= convertToTitle(29);
-        int[] inputArray4 = intersection(inputArray,inputArray2);
 
-
-          for(int i=0;i<inputArray3.length;i++)
-        System.out.println(inputArray3[i]);
-    }
-
-
-    public static    int[] intersection(int[] nums1, int[] nums2) {
-        HashSet<Integer> set1 = new HashSet<Integer>();
-        HashSet<Integer> set2 = new HashSet<Integer>();
-
-        for(int number=0;number<nums1.length;number++)
-            set1.add(number);
-
-        for(int number=0;number<nums2.length;number++)
-            set2.add(number);
-
-        if(set1.size()<set2.size())
-            return intersection_calc(set1,set2);
-
-        return intersection_calc(set2,set1);
     }
 
 
 
 
-    public static int[] intersection_calc(HashSet<Integer> set1,HashSet<Integer> set2)
-    {
-        int[] return2 = new int[set1.size()];
-        int ind=0;
 
-        for(int number : set1)
-        {
-            if(set2.contains(number))
-            {
-                return2[ind]=number;
-                ind++;
+
+
+    public static  int countSegments(String s) {
+        int segmentCount = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if ((i == 0 || s.charAt(i-1) == ' ') && s.charAt(i) != ' ') {
+                segmentCount++;
             }
         }
 
-        return return2;
-
+        return segmentCount;
     }
 
 
