@@ -1,0 +1,21 @@
+class Solution {
+    public String reverseWords(String s) {
+
+        StringBuilder myitem = new StringBuilder(s);
+        String reversedorder=myitem.reverse().toString();
+        String[] arrac = reversedorder.split(" ");
+        String returned="";
+        for(int i=arrac.length-1;0<=i;i--)
+        {
+            if(i==arrac.length-1)
+            returned+=arrac[i];
+            else
+            {
+            returned+=" "+arrac[i];
+
+            }
+        }
+
+        return returned;
+    }
+}
