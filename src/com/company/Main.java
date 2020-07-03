@@ -10,6 +10,7 @@ public class Main {
         int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
         int[] inputArray2 = {7, 2, 2, 5, 10, 7};
         int[] inputArray3 = {24, 85, 0};
+        int[] inputArray4 = {1,1,2,2,3,3};
 
         char[] reverser = {'H', 'e', 'l', 'l', 'o'};
         char[] reverser2 = {'1', '2', '3', '4', '5'};
@@ -22,7 +23,7 @@ public class Main {
         //     String aaa = Arrays.toString(inputArray3);
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
-        int ccc = countSegments("Hello, my name is John");
+        int ccc = distributeCandies(inputArray4);
        //  bbb= convertToTitle(29);
 
     }
@@ -33,16 +34,13 @@ public class Main {
 
 
 
-    public static  int countSegments(String s) {
-        int segmentCount = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            if ((i == 0 || s.charAt(i-1) == ' ') && s.charAt(i) != ' ') {
-                segmentCount++;
-            }
+    public static      int distributeCandies(int[] candies) {
+        Set<Integer> set = new HashSet<>();
+        for(int i =0 ; i< candies.length; i++){
+            set.add(candies[i]);
         }
 
-        return segmentCount;
+        return Math.min(set.size(), candies.length/2);
     }
 
 

@@ -1,0 +1,60 @@
+//My custom solution 2 ms
+
+class Solution {
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        //r is the length of rows
+        //c is the length of columns
+        int[][] nums2 = new int [r][c];
+
+
+    if (nums.length == 0 || r * c != nums.length * nums[0].length)
+            return nums;
+
+        int[] flat = new int[nums.length * nums[0].length];
+        int counter=0;
+        for(int x=0;x<nums.length;x++)
+            for(int y=0;y<nums[x].length;y++)
+            {
+                flat[counter] = nums[x][y];
+                counter++;
+            }
+
+
+        counter=0;
+        for(int i=0;i<nums2.length;i++)
+            for(int y=0;y<nums2[i].length;y++)
+            {
+             nums2[i][y]=flat[counter];
+            counter++;
+
+            }
+
+
+        return nums2;
+    }
+}
+
+
+//1 ms fastest alternative
+
+public class Solution {
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        int m = nums.length, n = nums[0].length;
+        if (m * n != r * c) return nums;
+
+        int[][] result = new int[r][c];
+        int row = 0, col = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                result[row][col] = nums[i][j];
+                col++;
+                if (col == c) {
+                    col = 0;
+                    row++;
+                }
+            }
+        }
+
+        return result;
+    }
+}
