@@ -1,0 +1,38 @@
+//Custom solution,Runtime 1-3ms its really fluid for some reason
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        int ucounter=0;
+        int lcounter=0;
+
+        for(int i=0;i<word.length();i++)
+        {
+              if(Character.isUpperCase(word.charAt(i)))
+                {
+                 ucounter++;
+                }else
+                {
+                 lcounter++;
+                }
+        }
+
+        if(ucounter == 1 && lcounter+1 == word.length() &&Character.isUpperCase(word.charAt(0)))
+            return true;
+        else
+        if(ucounter == word.length())
+            return true;
+        else
+        if(lcounter == word.length())
+         return true;
+
+        return false;
+    }
+}
+
+/*
+"FlaG"
+"USA"
+"Google"
+"leetcode"
+"ffffffffffffffffffffF"
+*/
