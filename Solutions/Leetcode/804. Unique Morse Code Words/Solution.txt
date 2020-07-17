@@ -1,0 +1,23 @@
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+
+        String[] alphabet = new String []{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        int i=0;
+
+  Set<String> seen = new HashSet();
+        String temp="";
+        for(String item:words)
+        {
+            temp="";
+            for(char a : item.toCharArray())
+            {
+                temp+=alphabet[a-'a'];
+            }
+
+           seen.add(temp);
+        }
+
+
+        return seen.size();
+    }
+}
