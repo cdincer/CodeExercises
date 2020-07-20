@@ -10,7 +10,7 @@ public class Main {
         int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
         int[] inputArray2 = {7, 2, 2, 5, 10, 7};
         int[] inputArray3 = {24, 85, 0};
-        int[] inputArray4 = {1,12,-5,-6,50,3};
+        int[] inputArray4 = {2,3,1,2,4,3};
         int[][] Marr =  {{2,2,3},{3,4,3}};
 
         char[] reverser = {'H', 'e', 'l', 'l', 'o'};
@@ -24,32 +24,35 @@ public class Main {
         //     String aaa = Arrays.toString(inputArray3);
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
-    double ccc =    findMaxAverage(inputArray4,4);
+    double ccc =    minSubArrayLen(7,inputArray4);
        //  bbb= convertToTitle(29);
 
     }
 
-//2147483646
 
 
 
 
+    public static    int minSubArrayLen(int s, int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
 
-    public static double findMaxAverage(int[] nums, int k) {
-        int[] sum = new int[nums.length];
-        sum[0] = nums[0];
+        int i=0,j = 0,sum =0;
+        int itemin=Integer.MAX_VALUE;
 
-        for (int i = 1; i < nums.length; i++)
+        while(j<nums.length)
         {
-            sum[i] = sum[i - 1] + nums[i];
-        }
-        double res = sum[k - 1] * 1.0 / k;
+            sum += nums[j++];
 
-        for (int i = k; i < nums.length; i++)
-        {
-            res = Math.max(res, (sum[i] - sum[i - k]) * 1.0 / k);
+
+
+            while(sum>=s)
+            {
+                itemin = Math.min(itemin,j-i);
+                sum -= nums[i++];
+            }
         }
-        return res;
+        return itemin == Integer.MAX_VALUE ? 0:itemin;
     }
 
 
