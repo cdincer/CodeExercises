@@ -10,7 +10,7 @@ public class Main {
         int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
         int[] inputArray2 = {7, 2, 2, 5, 10, 7};
         int[] inputArray3 = {24, 85, 0};
-        int[] inputArray4 = {2,3,1,2,4,3};
+        int[] inputArray4 = {1,3,1,3,100};
         int[][] Marr =  {{2,2,3},{3,4,3}};
 
         char[] reverser = {'H', 'e', 'l', 'l', 'o'};
@@ -24,7 +24,7 @@ public class Main {
         //     String aaa = Arrays.toString(inputArray3);
         String aaa ="there are some (12) digits 5566 in this 770 string 239";
         String bbb = "ab-CDE-fg_hi";
-    double ccc =    minSubArrayLen(7,inputArray4);
+    double ccc =    rob(inputArray4);
        //  bbb= convertToTitle(29);
 
     }
@@ -33,26 +33,19 @@ public class Main {
 
 
 
-    public static    int minSubArrayLen(int s, int[] nums) {
-        if (nums == null || nums.length == 0)
-            return 0;
+    public static  int rob(int[] nums) {
+        if (nums.length == 1) return nums[0];
+        return Math.max(rob(nums, 0, nums.length - 2), rob(nums, 1, nums.length - 1));
+    }
 
-        int i=0,j = 0,sum =0;
-        int itemin=Integer.MAX_VALUE;
-
-        while(j<nums.length)
-        {
-            sum += nums[j++];
-
-
-
-            while(sum>=s)
-            {
-                itemin = Math.min(itemin,j-i);
-                sum -= nums[i++];
-            }
+    private static int rob(int[] num, int lo, int hi) {
+        int include = 0, exclude = 0;
+        for (int j = lo; j <= hi; j++) {
+            int i = include, e = exclude;
+            include = e + num[j];
+            exclude = Math.max(e, i);
         }
-        return itemin == Integer.MAX_VALUE ? 0:itemin;
+        return Math.max(include, exclude);
     }
 
 
