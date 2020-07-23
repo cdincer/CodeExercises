@@ -1,0 +1,20 @@
+class Solution {
+    public int findLucky(int[] arr) {
+        int[] counters = new int[500];
+        for(int i=0;i<arr.length;i++)
+        {
+            counters[arr[i]]++;
+        }
+
+
+
+        for(int i=counters.length-1;0<i;i--)
+        {
+            if(counters[i]==i)
+                return i;
+        }
+
+
+        return -1;
+    }
+}
