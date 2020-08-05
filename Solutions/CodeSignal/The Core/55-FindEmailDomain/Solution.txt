@@ -1,0 +1,29 @@
+//Custom
+String findEmailDomain(String address) {
+
+    String required =".com";
+    String bItem="";
+    int breakpoint=-1;
+
+    for(int i=0;i<address.length();i++)
+    {
+        if(address.charAt(i) == '@')
+        {
+                    breakpoint=i;
+        }
+
+        if(i>= breakpoint && breakpoint != -1)
+        {
+            bItem+=address.charAt(i);
+        }
+    }
+
+    String[] Items = bItem.split("@");
+
+
+return Items[Items.length-1];
+}
+//CodeGolf solution
+String findEmailDomain(String address) {
+    return address.substring(address.lastIndexOf("@") + 1);
+}

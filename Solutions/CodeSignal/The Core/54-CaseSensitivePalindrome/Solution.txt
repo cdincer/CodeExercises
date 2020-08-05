@@ -1,0 +1,5 @@
+boolean isCaseInsensitivePalindrome(String inputString) {
+    return new StringBuilder(inputString).reverse().toString().equalsIgnoreCase(inputString);
+}
+
+//More code golf solution instead of mine.
