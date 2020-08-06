@@ -1,0 +1,26 @@
+//Custom solution
+String htmlEndTagByStartTag(String startTag) {
+    String result = "";
+    String[] brackets = startTag.split(" ");
+    String items = brackets[0];
+    brackets = items.split(" ");
+
+    result = brackets[0];
+
+    if(result.charAt(0) == '<' )
+    {
+        result = result.substring(1);
+        if(result.charAt(result.length()-1) == '>')
+        result = result.substring(0,result.length()-1);
+
+        result = "</" + result+">";
+            System.out.println(result);
+
+    }
+return result;
+}
+//CodeGolf
+String htmlEndTagByStartTag(String startTag) {
+    String[] split = startTag.split("[< >]");
+    return "</" + split[1] + ">";
+}

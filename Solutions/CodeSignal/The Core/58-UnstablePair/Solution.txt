@@ -1,0 +1,17 @@
+boolean isUnstablePair(String filename1, String filename2) {
+   int one = filename1.compareTo(filename2);
+   int two = filename1.toUpperCase().compareTo(filename2.toUpperCase());
+   int three = filename1.toLowerCase().compareTo(filename2.toLowerCase());
+   System.out.println("One: " + one);
+   System.out.println("Two: " + two);
+   System.out.println("Three: " + three);
+   if (one > 0 && two < 0) return true;
+   if (one < 0 && two > 0) return true;
+   if (one < 0 && three > 0) return true;
+   if (one >0 && three < 0) return true;
+
+
+
+   return false;
+}
+

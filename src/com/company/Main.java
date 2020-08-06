@@ -56,6 +56,31 @@ public class Main {
       return true;
   }
 
+    public static  boolean isSubstitutionCipher1(String string1, String string2) {
+
+        HashMap<Character,Character> Items = new HashMap<>();
+
+
+        for(int i=0;i<string1.length();i++)
+        {
+            if(!Items.containsKey(string1.charAt(i)))
+            {
+                Items.put(string1.charAt(i), string2.charAt(i));
+            }
+            else {
+
+
+                if (Items.get(string1.charAt(i)) != string2.charAt(i))
+                    return false;
+
+            }
+        }
+
+
+
+        return true;
+    }
+
 
 }
 
