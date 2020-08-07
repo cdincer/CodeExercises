@@ -52,3 +52,29 @@ boolean isSubstitutionCipher2(String string1, String string2) {
   }
   return true;
 }
+
+
+//Faster custom solution
+boolean isSubstitutionCipher(String string1, String string2) {
+HashMap<Character,Character> Items = new HashMap<>();
+
+for(int i=0;i<string1.length();i++)
+{
+
+        if(!Items.containsKey(string1.charAt(i)))
+        {
+        if (Items.containsValue(string2.charAt(i)))
+        return false;
+
+        Items.put(string1.charAt(i), string2.charAt(i));
+        }else
+        {
+            if (Items.get(string1.charAt(i)) != string2.charAt(i))
+            {
+            return false;
+            }
+        }
+}
+
+return true;
+}

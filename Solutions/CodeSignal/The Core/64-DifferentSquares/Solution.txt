@@ -1,0 +1,47 @@
+//Custom solution.
+int differentSquares(int[][] matrix) {
+    int result=0;
+    ArrayList<String> item2= new ArrayList<>();
+
+    for(int i=1;i<matrix.length;i++)
+        for(int y=1;y<matrix[i].length;y++)
+        {
+            String description="";
+            int counter=0;
+            if(matrix[i][y]>=0)
+            counter++;
+
+            if( matrix[i-1][y]>=0)
+            counter++;
+
+            if(matrix[i][y-1]>=0)
+            counter++;
+
+            if(matrix[i-1][y-1]>=0)
+            counter++;
+
+            description="Item at"+matrix[i-1][y-1]+"left top"+matrix[i-1][y]+"right top"+matrix[i][y-1]+"left bottom"+matrix[i][y]+"right bottom";
+
+            if(counter>=4)
+            {
+
+             if(!item2.contains(description))
+             {
+                 item2.add(description);
+                 result++;
+             }
+            }
+        }
+
+
+
+return result;
+}
+/*
+[0,0][0,1]
+[1,0][1,1]
+
+[][x-1,y]
+[][x,y]
+
+*/

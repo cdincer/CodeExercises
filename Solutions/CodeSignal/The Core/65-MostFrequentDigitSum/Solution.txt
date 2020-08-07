@@ -1,0 +1,49 @@
+
+//Done in 22 mins.Custom solution.
+int mostFrequentDigitSum(int n) {
+
+int[] occurences= new int[100000];
+int max=0;
+int maxItem=0;
+
+while(n>0)
+{
+    String[] seperation = stepcalculator(n).split(",");
+    occurences[Integer.parseInt(seperation[1])]++;
+    n=Integer.parseInt(seperation[0]);
+}
+
+for(int i=0;i<occurences.length;i++)
+{
+    if(occurences[i]>=max)
+    {
+        maxItem=i;
+        max=occurences[i];
+        System.out.println(maxItem+" max Item is"+max+" max occurence");
+
+    }
+}
+
+return maxItem;
+}
+
+String stepcalculator(int item)
+{
+    int result=0;
+    int dsum=0;
+    char[] parts = String.valueOf(item).toCharArray();
+
+    for(int i=0;i<parts.length;i++)
+    {
+        dsum=Integer.parseInt(String.valueOf(parts[i]))+dsum;
+    }
+
+
+    result = item-dsum;
+    return result+","+dsum;
+}
+
+//Multiple steps first build the digit calculator.that takes it out of the main number. done.
+//then do this with while loop
+//Make a array to hold these numbers with 10.000 as maximum
+//Go through the array to find the max number of occurences and HashMap seems like it.
