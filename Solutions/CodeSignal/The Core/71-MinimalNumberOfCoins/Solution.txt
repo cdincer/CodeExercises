@@ -1,0 +1,18 @@
+int minimalNumberOfCoins(int[] coins, int price) {
+    int cosum=0;
+
+      for(int i=coins.length-1;0<=i;i--)
+    {
+        int breaker=0;
+        while(breaker==0)
+        {
+            if(price % coins[i] < coins [i])
+            {
+                cosum+=price/coins[i];
+                price=price % coins[i] ;
+                breaker=1;
+            }
+        }
+    }
+return cosum;
+}

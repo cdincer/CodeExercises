@@ -1,0 +1,11 @@
+	int numberOfClans(int[] divisors, int k) {
+		TreeSet<String> s =new TreeSet<>();
+		for(int i=1; i<=k;i++){
+			String cur="";
+			for(int j=0; j<divisors.length;j++){
+				cur+= (i%divisors[j]==0 ) ? 0 : 1;
+			}
+			s.add(cur);
+		}
+		return s.size();
+	}
