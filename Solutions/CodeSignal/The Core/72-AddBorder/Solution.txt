@@ -1,0 +1,32 @@
+String[] addBorder(String[] picture) {
+int y=0;
+String [] result= new String[picture.length+2];
+result[0]="";
+result[result.length-1]="";
+
+for(int i=0;i<picture[0].length()+2;i++)
+{
+    result[0]+="*";
+}
+
+for(int i=0;i<picture[0].length()+2;i++)
+{
+    result[result.length-1]+="*";
+}
+
+for(int i=0;i<picture.length;i++)
+{
+    picture[i]="*"+picture[i]+"*";
+}
+
+for(int i=1;i<result.length-1;i++)
+{
+    if(y<picture.length)
+    {
+    result[i]=picture[y];
+    y++;
+    }
+}
+
+return result;
+}

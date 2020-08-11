@@ -1,0 +1,24 @@
+int electionsWinners(int[] votes, int k) {
+
+    int mostCurrentVotes = 0;
+    int couldWin = 0;
+    int mostIndex = 0;
+    boolean uniqueMost = true;
+
+    for(int i = 0; i < votes.length; i++){
+        if(votes[i] >= mostCurrentVotes){
+            mostCurrentVotes = votes[i];
+            mostIndex = i;
+        }
+    }
+
+
+    for(int i = 0; i < votes.length; i++){
+        if(mostIndex != i && votes[i] == mostCurrentVotes) uniqueMost = false;
+        if((votes[i] + k) > mostCurrentVotes) couldWin++;
+    }
+
+    if(k == 0 && uniqueMost == true) return 1;
+
+    return couldWin;
+}
