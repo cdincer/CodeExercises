@@ -1,0 +1,28 @@
+String integerToStringOfFixedWidth(int number, int width) {
+
+    char[] item = String.valueOf(number).toCharArray();
+
+
+    String processer = "";
+    if(item.length>width)
+    {
+        processer = String.valueOf(number);
+        int cut =  String.valueOf(number).length() - width;
+        processer = processer.substring(cut);
+        return processer;
+    } else if(width>item.length)
+    {
+     for(int i=0;i<width - item.length;i++)
+     {
+         processer+="0";
+     }
+     processer +=  String.valueOf(number);
+
+     return processer;
+    } else if(width == item.length)
+    return  String.valueOf(number);
+
+
+
+return "Unexpected value";
+}

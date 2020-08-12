@@ -1,0 +1,51 @@
+	static boolean adaNumber(String line) {
+		int base = 0;
+		String value = null;
+		int hash = line.indexOf('#');
+
+		if (hash < 0) {
+			// no base specified
+			base = 10;
+			value = line;
+		} else if (hash == 0) {
+			// an empty base specified
+			return false;
+		} else {
+			// we have a base, need to get value part
+			try {
+				base = Integer.parseInt(noUnders(line.substring(0, hash)));
+				if (base < 2 || base > 16)
+					return false;
+				try {
+					value = line.substring(hash+1, line.lastIndexOf('#'));
+				} catch (IndexOutOfBoundsException e) {
+					// probably, no closing hash
+					return false;
+				}
+			} catch (NumberFormatException e) {
+				return false; // provided value not parseable to int
+			}
+		}
+
+			System.out.println("Processing "+value+" for base "+base);
+			value = noUnders(value);
+			System.out.println("Processing "+value+" for base "+base);
+			if (value.equals("")) return false;
+			for (int i = 0; i<value.length(); i++) {
+				if (Character.digit(value.charAt(i), base)<0) {
+					System.out.println("Failing on "+value.charAt(i));
+					return false;
+				}
+			}
+			return true;
+	}
+
+	// removes all underscores
+	static String noUnders(String s) {
+		int x = s.indexOf("_");
+		while (x>-1) {
+			s = s.substring(0, x)+s.substring(x+1);
+			x = s.indexOf("_");
+		}
+		return s;
+	}
