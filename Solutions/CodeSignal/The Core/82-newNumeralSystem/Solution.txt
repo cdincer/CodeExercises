@@ -1,0 +1,30 @@
+String[] newNumeralSystem(char number) {
+
+int maxlimit  = number -'A';
+int minimum,target;
+minimum=0;
+target   = number -'A';
+ArrayList<String> aprep = new ArrayList<>();
+
+while(minimum <= maxlimit)
+{
+    if(minimum + maxlimit == target)
+    {char one = (char) (minimum +'A');
+     char two = (char) (maxlimit+'A');
+        aprep.add( one +" + "+two);
+    }
+    minimum++;
+    maxlimit--;
+}
+
+String[] returned = new String[aprep.size()];
+
+for(int i=0;i<returned.length;i++)
+{
+
+    returned[i] = aprep.get(i);
+}
+
+return returned;
+
+}

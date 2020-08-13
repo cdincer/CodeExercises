@@ -1,0 +1,13 @@
+String stolenLunch(String note) {
+    char[] res = new char[note.length()];
+    int i = 0;
+    for (char c: note.toCharArray()) {
+        char x = c;
+        if (c > 47 && c < 58) x += 49;
+        else if (c > 96 && c < 107) x -= 49;
+
+        res[i++] = x;
+    }
+
+    return new String(res);
+}

@@ -1,0 +1,23 @@
+String reflectString(String inputString) {
+
+String newone="";
+char current='a';
+
+for(int i=0;i<inputString.length();i++)
+{
+    current = inputString.charAt(i);
+
+    current =  (char) ('a' + (25-(current-'a')));
+
+    newone += current;
+
+}
+
+return newone;
+}
+//a->z 26
+//b->y 25
+//c->x
+//n->m
+//m->n
+//z->a
