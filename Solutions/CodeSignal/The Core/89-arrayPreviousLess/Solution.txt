@@ -1,0 +1,27 @@
+int[] arrayPreviousLess(int[] items) {
+    int[] secondary = Arrays.copyOf(items,items.length);
+    for(int i=0;i<items.length;i++)
+    {
+        int x,lesser;
+        x=lesser=0;
+
+        while(x != i)
+        {
+            if(items[x] < items[i])
+            {
+                lesser=items[x];
+            }
+            x++;
+        }
+
+        if(lesser==0)
+        {
+            secondary[i]=-1;
+        } else
+        {
+            secondary[i] = lesser;
+        }
+    }
+
+return secondary;
+}
