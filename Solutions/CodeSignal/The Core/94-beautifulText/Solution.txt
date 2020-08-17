@@ -1,0 +1,21 @@
+boolean beautifulText(String inputString, int l, int r) {
+    boolean returnValue = false;
+    int i, j;
+    boolean nonBlankFound = false;
+    for (j = l; j <= r; j++)
+    {
+        nonBlankFound = false;
+        for (i = j; i < inputString.length(); i += j + 1)
+        {
+            if (inputString.charAt(i) != ' ')
+            {
+                nonBlankFound = true;
+            }
+        }
+        if (!nonBlankFound && i == inputString.length())
+        {
+            returnValue = true;
+        }
+    }
+    return returnValue;
+}

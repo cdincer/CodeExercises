@@ -1,0 +1,19 @@
+int cyclicString(String s) {
+    int returnValue = 1;
+    int i;
+    boolean found = false;
+    while (!found && returnValue < s.length())
+    {
+        found = true;
+        for (i = returnValue; i < s.length(); i++)
+        {
+            if (s.charAt(i) != s.charAt(i - returnValue))
+            {
+                returnValue++;
+                found = false;
+                break;
+            }
+        }
+    }
+    return returnValue;
+}
