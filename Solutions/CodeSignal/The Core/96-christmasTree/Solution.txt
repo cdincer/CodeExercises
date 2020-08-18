@@ -1,0 +1,55 @@
+String[] christmasTree(int levelNum, int levelHeight) {
+List<String> rs = new ArrayList<>();
+        int maxWidthChristmasTree = 5 + (levelHeight - 1) * 2 + (levelNum - 1) * 2;
+        rs.addAll(Arrays.asList(buildCrown(maxWidthChristmasTree / 2 + 1)));
+        rs.addAll(Arrays.asList(buildLevels(levelNum, levelHeight, maxWidthChristmasTree)));
+        rs.addAll(Arrays.asList(buildFoot(levelNum, maxWidthChristmasTree,
+                levelHeight % 2 == 1 ? levelHeight : levelHeight + 1)));
+        return rs.toArray(new String[rs.size()]);
+}
+
+String[] buildCrown(int maxWidth) {
+ String[] crown = new String[3];
+        char[] row = new char[maxWidth];
+        for (int i = 0; i < 3; i++) {
+            if (i < 2) {
+                Arrays.fill(row, 0, maxWidth - 1, ' ');
+                Arrays.fill(row, maxWidth - 1, maxWidth, '*');
+            } else {
+                row = new char[maxWidth + 1];
+                Arrays.fill(row, 0, row.length - 3, ' ');
+                Arrays.fill(row, row.length - 3, row.length, '*');
+            }
+            crown[i] = new String(row);
+        }
+        return crown;
+}
+
+String[] buildLevels(int levelNum, int levelHeight, int maxWidth) {
+        String[] level = new String[levelHeight * levelNum];
+        int firstLevelAsteriskLength = 5, levelIdx = 0;
+        for (int i = 0; i < levelNum; i++) {
+            int currentAsteriskLength = firstLevelAsteriskLength;
+            int maxCurrentLevelLength = maxWidth - levelNum + i + 1;
+            for (int j = 0; j < levelHeight; j++) {
+                char[] row = new char[maxCurrentLevelLength - levelHeight + j + 1];
+                Arrays.fill(row, 0, row.length - currentAsteriskLength, ' ');
+                Arrays.fill(row, row.length - currentAsteriskLength, row.length, '*');
+                level[levelIdx++] = new String(row);
+                currentAsteriskLength += 2;
+            }
+            firstLevelAsteriskLength += 2;
+        }
+        return level;
+    }
+
+String[] buildFoot(int levelNum, int maxWidth, int asteriskLength) {
+        String[] foot = new String[levelNum];
+        char[] row = new char[(maxWidth + asteriskLength) / 2];
+        for (int i = 0; i < levelNum; i++) {
+            Arrays.fill(row, 0, row.length - asteriskLength, ' ');
+            Arrays.fill(row, row.length - asteriskLength, row.length, '*');
+            foot[i] = new String(row);
+        }
+        return foot;
+    }

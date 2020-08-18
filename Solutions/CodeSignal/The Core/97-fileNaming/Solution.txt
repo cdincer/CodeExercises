@@ -1,0 +1,21 @@
+String[] fileNaming(String[] names) {
+int y=1;
+String[] turned = new String[names.length];
+HashSet<String> Items = new HashSet<String>();
+for(int i=0;i<names.length;i++)
+{
+    if(!Items.add(names[i]))
+    {
+        while(Items.contains(names[i]+"("+y+")"))
+        y++;
+        Items.add(names[i]+"("+y+")");
+        turned[i]=names[i]+"("+y+")";
+        y=1;
+
+    }   else
+        {
+         turned[i]=names[i];
+        }
+}
+return turned;
+}
