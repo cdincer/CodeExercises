@@ -1,0 +1,12 @@
+int crossingSum(int[][] matrix, int a, int b) {
+int sum=0;
+for(int i=0;i<matrix[a].length;i++)
+{
+    sum+=matrix[a][i];
+}
+for(int i=0;i<matrix.length;i++)
+{
+    sum+=matrix[i][b];
+}
+return sum - matrix[a][b];
+}
