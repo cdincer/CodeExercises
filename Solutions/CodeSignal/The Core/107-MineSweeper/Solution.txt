@@ -1,0 +1,79 @@
+int[][] minesweeper(boolean[][] matrix) {
+
+
+int[][] mines = new int[matrix.length][matrix[0].length];
+
+
+for(int i=0;i<matrix.length;i++)
+    for(int j=0;j<matrix[i].length;j++)
+    {
+     int count=0;
+
+        //one top   ---1
+        if(i>0)
+        if(matrix[i-1][j])
+        {
+            count++;
+        }
+
+        //top right one above  ---2
+         if(i>0 && j<matrix[0].length-1)
+         if(matrix[i-1][j+1] == true)
+        {
+            count++;
+        }
+
+
+         //top left one above  ---3
+        if(i>0 && j>0)
+        if(matrix[i-1][j-1] == true)
+        {
+            count++;
+        }
+
+         //directly left --4 --checked
+         if(j>0)
+            if(matrix[i][j-1] == true)
+        {
+            count++;
+        }
+
+        //directly right -- 5 ---checked
+        if(j<matrix[0].length-1)
+           if(matrix[i][j+1] == true)
+        {
+            count++;
+        }
+
+       // one below   ---6  ---checked
+          if(i<matrix.length-1)
+           if(matrix[i+1][j] == true)
+        {
+            count++;
+        }
+
+        //one below left  ---7  --- checked
+       if(i < matrix.length-1 && j >0)
+             if(matrix[i+1][j-1] == true)
+        {
+            count++;
+        }
+           //one below right  ---8
+
+         if(i < matrix.length-1 && j < matrix[0].length-1)
+         if(matrix[i+1][j+1] == true)
+        {
+            count++;
+        }
+
+
+
+        mines[i][j]=count;
+
+
+
+
+}
+return mines;
+
+}
