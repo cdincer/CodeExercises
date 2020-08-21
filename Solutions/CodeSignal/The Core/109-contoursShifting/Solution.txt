@@ -1,0 +1,24 @@
+int[][] contoursShifting(int[][] m) {
+    for(int i=0; m.length-i>i && m[0].length-i>i; ++i){
+        int br = m.length-1-i, rc = m[0].length-1-i; //bottom row, right column
+        if((i&1) == 1){
+            int aux = m[i][i];
+            for(int c=i; c<rc; ++c) m[i][c] = m[i][c+1];
+            for(int r=i; r<br; ++r) m[r][rc] = m[r+1][rc];
+            if(i<br) for(int c=rc; c>i; --c) m[br][c] = m[br][c-1];
+            if(i<rc) for(int r=br; r>i; --r) m[r][i] = m[r-1][i];
+            if(i<rc && i<br) m[i+1][i] = aux;
+            else m[br][rc] = aux;
+        }
+        else{
+            int aux = m[br][rc];
+            for(int r=br; r>i; --r) m[r][rc] = m[r-1][rc];
+            for(int c=rc; c>i; --c) m[i][c] = m[i][c-1];
+            if(i<rc) for(int r=i; r<br; ++r) m[r][i] = m[r+1][i];
+            if(i<br) for(int c=i; c<rc; ++c) m[br][c] = m[br][c+1];
+            if(i<rc && i<br) m[br][rc-1] = aux;
+            else m[i][i] = aux;
+        }
+    }
+    return m;
+}
